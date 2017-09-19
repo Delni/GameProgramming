@@ -2,20 +2,21 @@
 <html>
 
 <head>
-  <?php include 'PHP/head.php' ?>
+  <?php include '../PHP/head.php' ?>
   <!--  My CSS -->
-  <link rel="stylesheet" href="./assets/master.css">
+  <link rel="stylesheet" href="../assets/master.css">
 </head>
 
 <body>
   <section class="hero is-bold is-warning is-fullheight">
     <div class="hero-head">
-      <?php include 'PHP/menu.php' ?>
+      <?php include '../PHP/menu.php' ?>
     </div>
-    <div class="hero-body">
+    <div class="hero-body" style="padding-bottom: 24px">
       <div class="container">
-        <h1 class="title">Welcome to XXX</h1>
-        <h2 class="subtitle">UWS's Project</h2>
+        <div id="playground" class="has-text-centered">
+          <p class="title has-text-light">Playground</p>
+        </div>
       </div>
     </div>
     <div class="hero-foot">
@@ -31,7 +32,7 @@
     </div>
   </section>
 
-  <?php include 'PHP/scripts.php' ?>
+  <?php include '../PHP/scripts.php' ?>
 </body>
 
 </html>

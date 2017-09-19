@@ -1,3 +1,16 @@
 #menu-dd {
   color: #4a4a4a;
 }
+
+#playground {
+  background-color: black;
+  width : 800px;
+  height: 600px;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.card {
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+}
