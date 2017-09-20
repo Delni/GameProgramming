@@ -17,8 +17,15 @@
         <span class="column is-1"></span>
         <div class="card column is-5">
           <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            <figure class="image is-3by4">
+              <img
+                src="../assets/img/10thdoctor.png"
+                alt="Placeholder image"
+                style="-moz-transform: scaleX(-1);
+                -o-transform: scaleX(-1);
+                -webkit-transform: scaleX(-1);
+                -ms-transform: scaleX(-1);
+                transform: scaleX(-1);">
             </figure>
           </div>
           <div class="card-content">
@@ -29,15 +36,15 @@
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">John Smith</p>
-                <p class="subtitle is-6">@johnsmith</p>
+                <p class="title is-4">Nicolas Delauney</p>
+                <p class="subtitle is-6">Tenant of the Design Street</p>
               </div>
             </div>
 
             <div class="content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#" class="link has-text-primary">#css</a> <a href="#">#responsive</a>
+              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
               <br>
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
@@ -45,8 +52,8 @@
         </div>
         <div class="card column is-5">
           <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            <figure class="image is-3by4">
+              <img src="../assets/img/rosetyler.png" alt="Placeholder image">
             </figure>
           </div>
           <div class="card-content">
@@ -57,15 +64,15 @@
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">John Smith</p>
-                <p class="subtitle is-6">@johnsmith</p>
+                <p class="title is-4">Claire Lacroix</p>
+                <p class="subtitle is-6"><abbr title="Tile Maker">Tyler</abbr> of the Development Society</p>
               </div>
             </div>
 
             <div class="content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#">#css</a> <a href="#">#responsive</a>
+              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
               <br>
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
