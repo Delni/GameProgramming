@@ -9,10 +9,10 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="/HTML5&JSGameDev/">Home</a>
-      <a class="navbar-item" href="/HTML5&JSGameDev/Play/">Play</a>
+      <a id="home" class="navbar-item" href="/HTML5&JSGameDev/">Home</a>
+      <a id="play" class="navbar-item" href="/HTML5&JSGameDev/Play/">Play</a>
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="">Docs</a>
+        <a id="docs" class="navbar-link" href="">Docs</a>
         <div class="navbar-dropdown" id="menu-dd">
           <a class="navbar-item" href="/HTML5&JSGameDev/Docs/overview.php">Overview</a>
           <a class="navbar-item" href="/HTML5&JSGameDev/Docs/sources.php">Sources</a>
@@ -23,7 +23,7 @@
           <a class="navbar-item" target="blank" href="http://fontawesome.io">Font Awesome <span class="icon"><i class="fa fa-external-link"></i></span></a>
         </div>
       </div>
-      <a class="navbar-item" href="/HTML5&JSGameDev/About/">About Us</a>
+      <a id="about" class="navbar-item" href="/HTML5&JSGameDev/About/">About Us</a>
     </div>
     <div class="navbar-end">
 

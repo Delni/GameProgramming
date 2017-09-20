@@ -33,6 +33,9 @@
   </section>
 
   <?php include '../PHP/scripts.php' ?>
+  <script type="text/javascript">
+    $('#play').addClass('is-active');
+  </script>
 </body>
 
 </html>

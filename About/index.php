@@ -95,6 +95,9 @@
   </section>
 
   <?php include '../PHP/scripts.php' ?>
+  <script type="text/javascript">
+    $('#about').addClass('is-active');
+  </script>
 </body>
 
 </html>

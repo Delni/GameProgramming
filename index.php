@@ -32,6 +32,9 @@
   </section>
 
   <?php include 'PHP/scripts.php' ?>
+  <script type="text/javascript">
+    $('#home').addClass('is-active');
+  </script>
 </body>
 
 </html>
