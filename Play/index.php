@@ -5,6 +5,7 @@
   <?php include '../PHP/head.php' ?>
   <!--  My CSS -->
   <link rel="stylesheet" href="../assets/master.css">
+  <script type="text/javascript" src="../assets/phaser.min.js"></script>
 </head>
 
 <body>
@@ -15,7 +16,6 @@
     <div class="hero-body" style="padding-bottom: 24px">
       <div class="container">
         <div id="playground" class="has-text-centered">
-          <p class="title has-text-light">Playground</p>
         </div>
       </div>
     </div>
@@ -36,6 +36,7 @@
   <script type="text/javascript">
     $('#play').addClass('is-active');
   </script>
+  <script src="../JS/game.js"></script>
 </body>
 
 </html>
