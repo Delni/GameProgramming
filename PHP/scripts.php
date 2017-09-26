@@ -7,4 +7,4 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous">
 </script>
-<script src="/HTML5&JSGameDev/JS/main.js"></script>
+<script src="/GameProgramming/JS/main.js"></script>

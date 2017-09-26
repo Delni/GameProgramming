@@ -21,7 +21,10 @@
               <p>Here are some of the color palettes we tried first of all. You can try yourself on
                 <a href="http://colormind.io/" class="has-text-info" target="_blank">colormind.io</a><hr></p>
                 <img src="../assets/img/Palette1.png" alt="Palette1" class="image"><hr>
-                <img src="../assets/img/Palette2.png" alt="Palette2" class="image">
+                <img src="../assets/img/Palette2.png" alt="Palette2" class="image"><hr>
+				<img src="../assets/img/Palette3.png" alt="Palette3" class="image"><hr>
+				<img src="../assets/img/Palette4.png" alt="Palette4" class="image"><hr>
+				<img src="../assets/img/Palette5.png" alt="Palette5" class="image">
               </div>
             </article>
             <article class="message is-success column is-6">
