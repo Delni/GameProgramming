@@ -4,6 +4,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'playground', { preload: pre
 function preload() {
 
     game.load.image('sky', '../JS/assets/sky.png');
+    game.load.image('building1','../JS/assets/RedHouse.png');
     game.load.image('ground', '../JS/assets/platform.png');
     game.load.image('star', '../JS/assets/star.png');
     game.load.spritesheet('dude', '../JS/assets/player_spritesheet.png', 138, 150);
@@ -25,9 +26,10 @@ function create() {
 
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
+    game.add.sprite(0, game.world.height-64-375-30,'building1')
 
     // We change the size of the world
-    // game.world.setBounds(0, 0, 1920, 600);
+    game.world.setBounds(0, 0, 1920, 600);
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = game.add.group();
@@ -91,7 +93,7 @@ function create() {
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
-    console.log(cursors);
+    player.body.velocity.x = 350;
     game.camera.follow(player)
 
 }
@@ -106,32 +108,36 @@ function update() {
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
     //  Reset the players velocity (movement)
-    player.body.velocity.x = 0;
-
-    if (cursors.left.isDown)
-    {
-        //  Move to the left
-        player.body.velocity.x = -350;
-        if(player.body.touching.down)
-        player.animations.play('left');
+    player.body.velocity.x = 350;
+    if (player.body.touching.down) {
+      player.animations.play('right');
+    } else {
+      player.frame = 13;
     }
-    else if (cursors.right.isDown)
-    {
-        //  Move to the right
-        player.body.velocity.x = 350;
-        if(player.body.touching.down)
-        player.animations.play('right');
-    }
-    else
-    {
-        //  Stand still
-        player.animations.stop();
-        if(player.body.touching.down){
-          player.frame = 0;
-        } else {
-          player.frame = 13;
-        }
-    }
+    // if (cursors.left.isDown)
+    // {
+    //     //  Move to the left
+    //     player.body.velocity.x = -350;
+    //     if(player.body.touching.down)
+    //     player.animations.play('left');
+    // }
+    // else if (cursors.right.isDown)
+    // {
+    //     //  Move to the right
+    //     player.body.velocity.x = 350;
+    //     if(player.body.touching.down)
+    //     player.animations.play('right');
+    // }
+    // else
+    // {
+    //     //  Stand still
+    //     player.animations.stop();
+    //     if(player.body.touching.down){
+    //       player.frame = 0;
+    //     } else {
+    //       player.frame = 13;
+    //     }
+    // }
 
     //  Allow the player to jump if they are touching the ground.
     if (cursors.up.isDown && player.body.touching.down)
@@ -139,7 +145,6 @@ function update() {
         player.body.velocity.y = -350;
         player.animations.play('up');
     }
-
 }
 
 function collectStar (player, star) {
