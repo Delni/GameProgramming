@@ -1,6 +1,6 @@
 <nav  id="menu"  class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item">Phaser's Game</a>
+    <a class="navbar-item" href="/GameProgramming/"><img src="/GameProgramming/assets/img/favico.png" alt="Phaser's Game"></a>
     <button class="button is-dark navbar-burger">
       <span></span>
       <span></span>

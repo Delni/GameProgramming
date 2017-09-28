@@ -14,9 +14,19 @@
     </div>
     <div class="hero-body">
       <div class="container">
-        <h1 class="title is-1">Welcome to XXX</h1>
-        <h2 class="subtitle">UWS's Project</h2>
-        <a class="button is-dark is-large title has-text-light" id="playbutton" href="/GameProgramming/Play/">Go to game !</a>
+        <div class="columns">
+
+          <div id="mainTitle" class="column is-6">
+            <div>
+              <h1 class="title is-1">Welcome to XXX</h1>
+              <h2 class="subtitle">UWS's Project</h2>
+              <a class="button is-dark is-large title has-text-light" id="playbutton" href="/GameProgramming/Play/">Go to game !</a>
+            </div>
+          </div>
+          <div class="column is-6 has-text-centered image">
+            <img src="JS/assets/player.gif" alt="Ready Player One ?" style="max-width: 37vw; position:relative;top:-10%">
+          </div>
+        </div>
       </div>
     </div>
     <div class="hero-foot">

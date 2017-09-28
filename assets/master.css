@@ -23,8 +23,21 @@
 
 #playbutton {
   position: relative;
-  top: 2em;
-  left: 100px;
+  top: 15%;
+  left: 15%;
+}
+
+#mainTitle {
+  position: relative;
+}
+
+#mainTitle>* {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  height: 30%;
+  width: 100%;
+  margin: -15% 0 0 -25%;
 }
 
 .card {
