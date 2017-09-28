@@ -7,4 +7,9 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous">
 </script>
+<!--  Sticky Anything -->
+<script type="text/javascript" src="/GameProgramming/assets/jq-sticky-anything.min.js"></script>
+<script type="text/javascript">
+  $("#menu").stickThis();
+</script>
 <script src="/GameProgramming/JS/main.js"></script>
