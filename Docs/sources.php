@@ -16,7 +16,7 @@
       <div class="container">
         <div class="columns">
           <div class="container column is-8">
-            <article class="message is-dark">
+            <article class="message is-dark has-no-background">
               <div class="message-body">
                 <p class="title">Birth of a Project</p>
                 <p>The idea to place our game in the late 1920's came from the visit of the Scotland Street
@@ -24,7 +24,7 @@
                 <img src="../assets/img/SSSM.jpg" alt="Scotland Street School Museam" class="image" style="margin:auto;margin-bottom : 0">
               </div>
             </article>
-            <article class="message is-dark">
+            <article class="message is-dark has-no-background">
               <div class="message-body ">
                 <p class="title">Color Palettes</p>
                 <p>Here are some of the color palettes we tried first of all. You can try yourself on
@@ -38,7 +38,7 @@
               </article>
           </div>
           <div class="container column">
-            <article class="message is-dark">
+            <article class="message is-dark has-no-background">
               <div class="message-body">
                 <p class="title">External sources &amp; credits</p>
                 <p>Here are the external assets we used on the website / game</p>
@@ -49,6 +49,8 @@
                     <li><a class="has-text-info" href="http://bulma.io">Bulma</a>, the CSS framework</li>
                     <li><a class="has-text-info" href="http://fontawesome.io">Font Awesome 4</a></li>
                     <li><a class="has-text-info" href="http://jquery.com">JQuery</a></li>
+                    <li><a class="has-text-info" href="http://www.1001fonts.com/nickley-normala-font.html">Nickley NF</a> by Nick Curtis </li>
+                    <li><a class="has-text-info" href="http://www.1001fonts.com/parklane-font.html">Park Lane NF</a> by Nick Curtis</li>
 
                   </ul>
                 </div>

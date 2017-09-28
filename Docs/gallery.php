@@ -18,7 +18,7 @@
           <div class="container column is-3">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">Main character running :</p>
+                <p class="title is-4">Main character running :</p>
                 <p class="has-text-centered"><a href="../JS/assets/player.gif"><img src="../JS/assets/player.gif" alt="player"></a></p>
               </div>
             </article>
@@ -26,7 +26,7 @@
           <div class="container column is-3">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">Main character jumping :</p>
+                <p class="title is-4">Main character jumping :</p>
                 <p class="has-text-centered"><a href="../JS/assets/player_jump.gif"><img src="../JS/assets/player_jump.gif" alt="player"></a></p>
               </div>
             </article>
@@ -34,7 +34,7 @@
           <div class="container column is-3">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">Main character dashing :</p>
+                <p class="title is-4">Main character dashing :</p>
                 <p class="has-text-centered"><a href="../JS/assets/player_dash.gif"><img src="../JS/assets/player_dash.gif" alt="player"></a></p>
               </div>
             </article>
@@ -44,7 +44,7 @@
           <div class="container column is-12">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">Full character spritesheet :</p>
+                <p class="title is-4">Full character's spritesheet :</p>
                 <p class="has-text-centered"><a href="../JS/assets/player_spritesheet.png"><img src="../JS/assets/player_spritesheet.png" alt="player"></a></p>
               </div>
             </article>
@@ -54,7 +54,7 @@
           <div class="container column is-6">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">RedHouse</p>
+                <p class="title is-4">RedHouse</p>
                 <p class="has-text-centered"><a href="../JS/assets/RedHouse.png"><img src="../JS/assets/RedHouse.png" alt="redhouse"></a></p>
               </div>
             </article>
@@ -62,7 +62,7 @@
           <div class="container column is-6">
             <article class="message  has-background-alpha">
               <div class="message-body">
-                <p class="title is-6">Buidling 1</p>
+                <p class="title is-4">Buidling 1</p>
                 <p class="has-text-centered"><a href="../JS/assets/Building1.png"><img src="../JS/assets/Building1.png" alt="building1"></a></p>
               </div>
             </article>

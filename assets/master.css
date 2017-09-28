@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'ParkLane'; /*a name to be used later*/
+    src: url('/GameProgramming/assets/fonts/parklane/ParkLaneNF.ttf');
+}
+
+@font-face {
+    font-family: 'Nickley'; /*a name to be used later*/
+    src: url('/GameProgramming/assets/fonts/nickley-normala/NickleyNF.ttf'); /*URL to font*/
+}
+
+
 #menu-dd {
   color: #4a4a4a;
 }
@@ -10,9 +21,19 @@
   margin-bottom: 0;
 }
 
+#playbutton {
+  position: relative;
+  top: 2em;
+  left: 100px;
+}
+
 .card {
   margin-left: 0.75em;
   margin-right: 0.75em;
+}
+
+.title, #menu>* {
+  font-family: 'Parklane'
 }
 
 hr {
@@ -26,4 +47,8 @@ hr {
 
 .has-background-alpha {
   background : rgba(255, 255, 255, 0.5)
+}
+
+.message.has-no-background{
+  background: rgba(255,255,255,0.3);
 }

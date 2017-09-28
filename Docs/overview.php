@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <p class="title">Overview</p>
+        <p class="title is-1">Overview</p>
         <p>
           Evolving in a city in the 1920’s, a newspaper’s carrier must deliver a certain amount of newspapers
           as fast as possible in the mailboxes in the street. Doing so, the player must avoid different obstacles
@@ -40,7 +40,7 @@
           We’ve also been thinking about making different levels of difficulty for the game.
          </p>
          <hr>
-         <p class="subtitle">Website completion</p>
+         <p class="title is-2">Website completion</p>
          <p>
            At first we’ve determined the main purposes and goals we wished to get from our web site. Then we’ve
             agreed on the website’s architecture and its universe. We’ve tried to determine the design on our
@@ -49,7 +49,7 @@
             coding it according to the website architecture that was previously decided.
           </p>
           <hr>
-          <p class="subtitle">What has been learnt so far...</p>
+          <p class="title is-2">What has been learnt so far...</p>
           <p>
             So far we have been able to use our skills in HTML, PHP and CSS to build our web site. Moreover we
             familiarised ourselves with Phaser by following
@@ -57,13 +57,13 @@
             We also learnt valuable skills on how to create / modify spritesheets.
           </p>
           <hr>
-          <p class="subtitle">What are the difficulties encontered...</p>
+          <p class="title is-2">What are the difficulties encontered...</p>
           <p>
             We’ve begun to apprehend the universe we wanted for our game so we’ve tried to design some elements
             such as the characters. The main issue is to find assets, or create them, in a style that fit our project.
           </p>
           <hr>
-          <p class="subtitle">What are the next steps...</p>
+          <p class="title is-2">What are the next steps...</p>
 
             <p><input type="checkbox" class="checkbox"> We need to find the title for our game.</p>
             <p><input type="checkbox" class="checkbox"> The design of the streets, the buildings and the industrial furniture will be a big part of our work.</p>
