@@ -18,3 +18,12 @@
 hr {
   background-color: rgb(42, 42, 50);
 }
+
+.has-margin-1{
+  margin: 1em;
+  display: inline-block;
+}
+
+.has-background-alpha {
+  background : rgba(255, 255, 255, 0.5)
+}

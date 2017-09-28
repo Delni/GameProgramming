@@ -13,7 +13,7 @@
       <?php include '../PHP/menu.php' ?>
     </div>
     <div class="hero-body">
-      <div class="container">
+      <div class="container content">
         <strong>Group Members:</strong>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">
@@ -64,11 +64,11 @@
           </p>
           <hr>
           <p class="subtitle">What are the next steps...</p>
-          <ul>
-            <li><input type="checkbox" class="checkbox"> We need to find the title for our game.</li>
-            <li><input type="checkbox" class="checkbox"> The design of the streets, the buildings and the industrial furniture will be a big part of our work. </li>
-            <li><input type="checkbox" class="checkbox"> Determine the gameplay and the different options the player will be able to choose upon.</li>
-          </ul>
+
+            <p><input type="checkbox" class="checkbox"> We need to find the title for our game.</p>
+            <p><input type="checkbox" class="checkbox"> The design of the streets, the buildings and the industrial furniture will be a big part of our work.</p>
+            <p><input type="checkbox" class="checkbox"> Determine the gameplay and the different options the player will be able to choose upon.</p>
+
           <p>
              Of course learning how to use Phaser will be challenging at first but with practice and work we
              should be able to develop our ideas into a game.

@@ -16,7 +16,7 @@
         <div class="navbar-dropdown" id="menu-dd">
           <a class="navbar-item" href="/GameProgramming/Docs/overview.php">Overview</a>
           <a class="navbar-item" href="/GameProgramming/Docs/sources.php">Sources</a>
-          <a class="navbar-item" href="/GameProgramming/Docs/devs.php">Dev' Post</a>
+          <a class="navbar-item" href="/GameProgramming/Docs/gallery.php">Gallery</a>
           <a class="navbar-divider"></a>
           <a class="navbar-item" target="blank" href="https://phaser.io">Phaser <span class="icon"><i class="fa fa-external-link"></i></span></a>
           <a class="navbar-item" target="blank" href="http://bulma.io">Bulma <span class="icon"><i class="fa fa-external-link"></i></span></a>
