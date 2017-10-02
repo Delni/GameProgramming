@@ -63,6 +63,21 @@
                     <li>Character spritesheets by <a class="has-text-info" href="https://opengameart.org/content/hero-spritesheets-ars-notoria">Balmer</a> </li>
                   </ul>
                 </div>
+                <hr>
+                <p class="subtitle">Musics and sounds:</p>
+                <div class="content has-text-left">
+                  <ul>
+                    <li><a class="has-text-info" href="https://www.youtube.com/watch?v=inHbha2nyPs&ab_channel=CaravanPalace">Dragons</a>, Caravan Palace, 2008</li>
+                    <li><a class="has-text-info" href="https://www.youtube.com/watch?v=1RaKSRU60bw&ab_channel=CaravanPalace">Suzy</a>, Caravan Palace, 2008</li>
+                    <li><a class="has-text-info" href="https://www.youtube.com/watch?v=3xlB7_esnao&ab_channel=ArchetypeMusic">Sweet Rascal</a>, Jamie Berry, 2013</li>
+                    <li><a class="has-text-info" href="https://www.youtube.com/watch?v=gyWOm0IKYsc&ab_channel=THEFUTURE">Dirty Stop Out</a>, Jamie Berry, 2013</li>
+                    <li><a class="has-text-info" href="https://www.youtube.com/watch?v=ga7hGR_74DQ&ab_channel=ParovStelar">Booty Swing</a>, Patrov Stelar, 2014</li>
+                    <li><a class="has-text-info" href="http://lasonotheque.org/detail-0514-pas-cours-en-chaussure-sur-beton.html">Running</a>, lasonotheque.org</li>
+                    <li><a class="has-text-info" href="http://www.universal-soundbank.com/lecture.htm">Throwing newspaper</a>, universal-soundbank.com</li>
+                    <li><a class="has-text-info" href="http://lasonotheque.org/detail-0687-grande-poubelle-a-pied.html">Garbage bin</a>, lasonotheque.org</li>
+                    <li><a class="has-text-info" href="http://lasonotheque.org/detail-0896-moteur-ford-courrier.html">Car</a>, lasonotheque.org</li>
+                  </ul>
+                </div>
               </div>
             </article>
           </div>
