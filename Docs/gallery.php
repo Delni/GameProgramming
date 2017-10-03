@@ -81,7 +81,7 @@
             <article class="message has-background-alpha">
               <div class="message-body">
                 <p class="title is-4">Red Car</p>
-                <p class="has-text-centered"><a href="../JS/assets/car1.gif"><img src="../JS/assets/car1.1.gif" alt="car1"></a></p>
+                <p class="has-text-centered"><a href="../JS/assets/car1.gif"><img src="../JS/assets/car1.gif" alt="car1"></a></p>
               </div>
             </article>
           </div>
