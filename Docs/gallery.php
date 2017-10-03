@@ -70,6 +70,12 @@
                 <p class="has-text-centered"><a href="../JS/assets/ItalianteHouse.png"><img src="../JS/assets/ItalianteHouse.png" alt="italiantehouse"></a></p>
               </div>
             </article>
+			<article class="message  has-background-alpha">
+              <div class="message-body">
+                <p class="title is-4">Mansarde House</p>
+                <p class="has-text-centered"><a href="../JS/assets/MansardeHouse.png"><img src="../JS/assets/MansardeHouse.png" alt="mansardehouse"></a></p>
+              </div>
+            </article>
           </div>
           <div class="container column is-6">
             <article class="message  has-background-alpha">
