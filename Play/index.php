@@ -36,7 +36,15 @@
   <script type="text/javascript">
     $('#play').addClass('is-active');
   </script>
-  <script src="../JS/game.js"></script>
+  <!--  Toggle next line to change from first game to new architecture -->
+  <script src="../JS/preload.js"></script>
+  <script src="../JS/menu.js"></script>
+  <script src="../JS/playground.js"></script>
+  <script src="../JS/win.js"></script>
+  <script src="../JS/lose.js"></script>
+  <script src="../JS/core.js"></script>
+
+  <!-- <script src="../JS/game.js"></script> -->
 </body>
 
 </html>
