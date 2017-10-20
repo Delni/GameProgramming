@@ -13,9 +13,8 @@ preload.prototype = {
     game.load.spritesheet('dude', '../JS/assets/Player/player_spritesheet.png', 138, 150);
     game.load.spritesheet('newspaper', '../JS/assets/Elements/newspaper_spritesheet.png', 96, 96);
     // UI
-    game.load.image('newsIco','../JS/assets/favico.png');
     game.load.image('menuWP','../JS/assets/MenuWP.png');
-    game.load.image('helpWP','../JS/assets/HelpWP.png');
+    game.load.image('helper','../JS/assets/HelpWP.png');
     game.load.spritesheet('buttonPlay', '../JS/assets/Inputs/Play.png', 195, 72);
     game.load.spritesheet('buttonBack', '../JS/assets/Inputs/Back.png', 195, 72);
     game.load.spritesheet('buttonHelp', '../JS/assets/Inputs/Help.png', 195, 72);

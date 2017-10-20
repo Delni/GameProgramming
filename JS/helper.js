@@ -1,9 +1,8 @@
 var helper = function(){};
 
 helper.prototype = {
-  preload: function() {
-    game.load.image('helper', './JS/assets/HelpWP.png');
-  },
+  preload: function() {},
+  
   create: function() {
     game.add.sprite(0, 0, 'helper');
     group = game.add.group();
