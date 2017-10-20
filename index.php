@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="column is-6 has-text-centered image">
-            <img src="JS/assets/player.gif" alt="Ready Player One ?" style="max-width: 37vw; position:relative;top:-10%">
+            <img src="JS/assets/Player/player.gif" alt="Ready Player One ?" style="max-width: 37vw; position:relative;top:-10%">
           </div>
         </div>
       </div>
