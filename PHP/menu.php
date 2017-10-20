@@ -11,6 +11,7 @@
     <div class="navbar-start">
       <a id="home" class="navbar-item" href="/GameProgramming/">Home</a>
       <a id="play" class="navbar-item" href="/GameProgramming/Play/">Play</a>
+      <a id="download" class="navbar-item" href="/GameProgramming/Download/">Download</a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a id="docs" class="navbar-link" href="">Docs</a>
         <div class="navbar-dropdown" id="menu-dd">
