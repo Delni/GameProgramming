@@ -11,10 +11,11 @@ playground.prototype = {
 
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
-    game.add.sprite(0, game.world.height-64-375-30,'building1')
 
-    // We change the size of the world
-    game.world.setBounds(0, 0, 1920, 600);
+    // Generate the city
+    city = game.add.group();
+    city.enableBody = true;
+    generateCity(10);
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = game.add.group();
@@ -30,13 +31,6 @@ playground.prototype = {
 
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
-
-    //  Now let's create two ledges
-    var ledge = platforms.create(400, 400, 'ground');
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(-150, 250, 'ground');
-    ledge.body.immovable = true;
 
     // The player and its settings
     player = game.add.sprite(138, game.world.height - 280, 'dude');
@@ -76,11 +70,11 @@ playground.prototype = {
     }
 
     //  The score
-    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    leftText = game.add.text(16, 16, '🗞 Left: 25', { fontSize: '32px', fill: '#000' });
+    houseText = game.add.text(16, 48, '🏠 Houses: 10', { fontSize: '32px', fill: '#000' });
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
-    player.body.velocity.x = 350;
     game.camera.follow(player)
   },
 
@@ -91,61 +85,72 @@ playground.prototype = {
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    if (game.physics.arcade.overlap(player, city)) {
+      updateHousesLeft()
+      isOverlaping = true;
+    } else {
+      isOverlaping = false;
+    }
 
     //  Reset the players velocity (movement)
-    player.body.velocity.x = 350;
-    if (player.body.touching.down) {
+    if (player.body.position.y >= 386) {
       player.animations.play('right');
     } else {
       player.frame = 13;
     }
-    // if (cursors.left.isDown)
-    // {
-    //     //  Move to the left
-    //     player.body.velocity.x = -350;
-    //     if(player.body.touching.down)
-    //     player.animations.play('left');
-    // }
-    // else if (cursors.right.isDown)
-    // {
-    //     //  Move to the right
-    //     player.body.velocity.x = 350;
-    //     if(player.body.touching.down)
-    //     player.animations.play('right');
-    // }
-    // else
-    // {
-    //     //  Stand still
-    //     player.animations.stop();
-    //     if(player.body.touching.down){
-    //       player.frame = 0;
-    //     } else {
-    //       player.frame = 13;
-    //     }
-    // }
 
     //  Allow the player to jump if they are touching the ground.
-    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.touching.down)
+    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 386)
     {
         player.body.velocity.y = -350;
         player.animations.play('up');
     }
 
-    if(game.input.keyboard.isDown(Phaser.Keyboard.X) && player.body.touching.down)
+    if(game.input.keyboard.isDown(Phaser.Keyboard.X) && player.body.position.y >= 386)
     {
-      player.animations.play('dash');
-      player.animations.next(1);
+      player.frame = (player.frame === 17) ? 16 : 17;
     }
   }
 }
-var score = 0;
+
+var isOverlaping = false;
+var score = 25;
+var houses = 10;
+
 function collectStar (player, star) {
 
     // Removes the star from the screen
     star.kill();
 
     //  Add and update the score
-    score += 10;
-    scoreText.text = 'Score: ' + score;
+    score --;
+    leftText.text = '🗞 Left: ' + score;
 
+}
+
+function updateHousesLeft(){
+  if(!isOverlaping){
+    houses --;
+    houseText.text = "🏠 Houses: "+houses;
+  }
+}
+
+function generateCity(nbBuildings){
+  var buildings = [
+    'Building1',
+    'ColonialHouse',
+    'ItalianteHouse',
+    'MansardeHouse',
+    'RedHouse'
+  ];
+  let currentBuilding;
+  for (var i = 0; i < nbBuildings; i++) {
+    let rand = Math.round(Math.random() * (buildings.length-1));
+    let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (385)); //10px margin between each
+    let yPosistion = game.world.height - 64 - 30 - game.cache.getImage(buildings[rand]).height;
+    console.log(buildings[rand]);
+    currentBuilding = city.create(xPosition, yPosistion,buildings[rand]);
+    game.physics.arcade.enable(currentBuilding);
+    currentBuilding.body.velocity.x=-350;
+  }
 }
