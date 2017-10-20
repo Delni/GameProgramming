@@ -5,5 +5,6 @@ game.state.add("Menu",menu);
 game.state.add("Game",playground);
 game.state.add("Win",win);
 game.state.add("Lose",lose);
+game.state.add("Helper",helper);
 
 game.state.start('Preload');
