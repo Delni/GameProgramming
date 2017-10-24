@@ -1,3 +1,5 @@
+window.PhaserGlobal = { disableWebAudio: true };
+
 var playground = function(){};
 
 // Global definitions for later use
@@ -11,22 +13,24 @@ playground.prototype = {
   },
 
   create: function(){
+    var music = game.add.audio('suzyMusic');
+    music.play();
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //  A simple background for our game
     game.add.sprite(0, 0, 'sky');
 
-    // Generate the city
-    city = game.add.group();
-    city.enableBody = true;
-    generateCity(houses);
-
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = game.add.group();
 
     //  We will enable physics for any object that is created in this group
     platforms.enableBody = true;
+
+    // Generate the city
+    city = game.add.group();
+    city.enableBody = true;
+    generateCity(houses);
 
     // Here we create the ground.
     var ground = platforms.create(0, game.world.height - 64, 'ground');
@@ -77,11 +81,8 @@ playground.prototype = {
   update: function(){
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
-    //game.physics.arcade.collide(stars, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    //game.physics.arcade.overlap(player, stars, collectStar, null, this);
-    //game.physics.arcade.overlap(player, stars, collectStar, null, this);
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
       isOverlaping = true;
@@ -112,10 +113,10 @@ playground.prototype = {
 
 function collectStar (player, star) {
 
-    // Removes the star from the screen
+    //Removes the star from the screen
     star.kill();
 
-    //  Add and update the score
+    //Add and update the score
     score --;
     leftText.text = '🗞 Left: ' + score;
 
@@ -140,12 +141,13 @@ function generateCity(nbBuildings){
   for (var i = 0; i < nbBuildings; i++) {
     let rand = Math.round(Math.random() * (buildings.length-1));
     let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (385)); //10px margin between each
-    let yPosistion = game.world.height - 64 - 30 - game.cache.getImage(buildings[rand]).height;
-    currentBuilding = city.create(xPosition, yPosistion,buildings[rand]);
+    let yPosition = game.world.height - 64 - 30 - game.cache.getImage(buildings[rand]).height;
+    currentBuilding = city.create(xPosition, yPosition,buildings[rand]);
     game.physics.arcade.enable(currentBuilding);
     currentBuilding.body.velocity.x=-350;
     currentBuilding.body.acceleration.set(-10,0);
   }
+
 }
 
 const pause_buttons = [
