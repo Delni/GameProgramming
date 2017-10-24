@@ -16,10 +16,13 @@ preload.prototype = {
     // UI
     game.load.image('menuWP','../JS/assets/MenuWP.png');
     game.load.image('helper','../JS/assets/HelpWP.png');
+    game.load.image('pause','../JS/assets/PauseWP.png');
     game.load.spritesheet('buttonPlay', '../JS/assets/Inputs/Play.png', 195, 72);
     game.load.spritesheet('buttonBack', '../JS/assets/Inputs/Back.png', 195, 72);
     game.load.spritesheet('buttonHelp', '../JS/assets/Inputs/Help.png', 195, 72);
-    game.load.spritesheet('menuItems', '../JS/assets/Inputs/Menu.png');
+    game.load.spritesheet('buttonPause', '../JS/assets/Inputs/PlayPause.png', 128, 128);
+    game.load.spritesheet('buttons', '../JS/assets/Inputs/buttons_spritesheet.png', 64, 64);
+    game.load.image('menuItems', '../JS/assets/Inputs/Menu.png');
   },
 
   create: function(){
