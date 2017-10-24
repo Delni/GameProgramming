@@ -141,7 +141,7 @@ playground.prototype = {
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     //game.physics.arcade.overlap(player, stars, collectStar, null, this);
-    game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    //game.physics.arcade.overlap(player, stars, collectStar, null, this);
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
       isOverlaping = true;
