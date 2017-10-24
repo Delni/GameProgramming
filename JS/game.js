@@ -5,7 +5,8 @@ function preload() {
 
     game.load.image('sky', '../JS/assets/sky.png');
     game.load.image('building1','../JS/assets/RedHouse.png');
-    game.load.image('ground', '../JS/assets/platform.png');
+    game.load.image('ground', '../JS/assets/pedWayDown.png');
+    game.load.image('road', '../JS/assets/Decor/upPedWay.png');
     game.load.image('star', '../JS/assets/star.png');
     game.load.spritesheet('dude', '../JS/assets/player_spritesheet.png', 138, 150);
 
@@ -95,6 +96,41 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     player.body.velocity.x = 350;
     game.camera.follow(player)
+
+    // Create a label to use as a button
+      pause_label = game.add.text(game.world.centerX - 95, game.world.centerY - 20, 'Pause', { font: '24px Arial', fill: '#fff' });
+      pause_label.inputEnabled = true;
+      pause_label.events.onInputUp.add(function () {
+          // When the pause button is pressed, we pause the game
+          game.paused = true;
+
+    // Then add the menu
+      //menu = game.add.sprite(1920/2, 600/2, 'menu');
+      //menu.anchor.setTo(0.5, 0.5);
+
+       // And a label to illustrate which menu item was chosen. (This is not necessary)
+      //choiseLabel = game.add.text(1920/2, 600-150, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
+      //choiseLabel.anchor.setTo(0.5, 0.5);
+    });
+
+    // Add a input listener that can help us return from being paused
+      game.input.onDown.add(unpause, self);
+
+      function unpause(event){
+          // Only act if paused
+          if(game.paused){
+              // Create a label to use as a button
+              unpause_label = game.add.text(60, 20, 'Unpause', { font: '24px Arial', fill: '#fff' });
+              unpause_label.inputEnabled = true;
+              unpause_label.events.onInputUp.add(function () {
+              // When the pause button is pressed, we pause the game
+              unPause_label.destroy();
+              game.paused = false;
+            });
+          }
+      };
+
+    }
 
 }
 
