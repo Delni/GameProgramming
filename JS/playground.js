@@ -13,7 +13,7 @@ playground.prototype = {
   },
 
   create: function(){
-    var music = game.add.audio('suzyMusic');
+    music = game.add.audio('suzyMusic');
     music.play();
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -163,18 +163,18 @@ const pause_buttons = [
   },
   {
     key: 'buttons',
-    action: unpause,
-    frames: [1,1,1]
+    action: restartLvl,
+    frames: [11,9,10]
   },
   {
     key: 'buttons',
-    action: unpause,
-    frames: [1,1,1]
+    action: selectLvl,
+    frames: [14,12,13]
   },
   {
     key: 'buttons',
-    action: unpause,
-    frames: [1,1,1]
+    action: backToMenu,
+    frames: [17,15,16]
   },
 ];
 
@@ -252,4 +252,22 @@ function mute() {
   } else {
     menu.children[1].setFrames(5,3,4)
   }
+}
+
+function restartLvl(){
+  music.stop();
+  game.paused = false;
+  game.state.start('Game');
+}
+
+function selectLvl(){
+  //music.stop();
+  //game.paused = false;
+  //game.state.start('LvlSelect');
+}
+
+function backToMenu(){
+  music.stop();
+  game.paused = false;
+  game.state.start('Menu')
 }
