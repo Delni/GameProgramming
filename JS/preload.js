@@ -33,8 +33,8 @@ preload.prototype = {
     game.load.audio('sweetRascalMusic', ['../assets/musics/Sweet_Rascal.mp3', '../assets/musics/Sweet_Rascal.ogg']);
 
     game.load.audio('runnerSound', ['../assets/sounds/Coureur.mp3', '../assets/sounds/Coureur.ogg']);
-    game.load.audio('thrownNewspaperSound', ['../assets/sounds/Journal_jete.mp3', '../assets/sounds/Journal_jete.ogg']);
-    game.load.audio('thrownNewspaperTableSound', ['../assets/sounds/Journal_jete_sur_table.mp3', '../assets/sounds/Journal_jete_sur_table.ogg']);
+    game.load.audio('thrownNewspaperSound', ['../assets/sounds/Journal_jete.wav', '../assets/sounds/Journal_jete.ogg']);
+    game.load.audio('thrownNewspaperTableSound', ['../assets/sounds/Journal_jete_sur_table.wav', '../assets/sounds/Journal_jete_sur_table.ogg']);
     game.load.audio('rainSound', ['../assets/sounds/Pluie.mp3', '../assets/sounds/Pluie.ogg']);
     game.load.audio('loudRainSound', ['../assets/sounds/Pluie_forte.mp3', '../assets/sounds/Pluie_forte.ogg']);
     game.load.audio('garbageBinSound', ['../assets/sounds/Poubelle.mp3', '../assets/sounds/Poubelle.ogg']);

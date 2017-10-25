@@ -6,6 +6,8 @@ var playground = function(){};
 var isOverlaping = false;
 var score = 25;
 var houses = 10;
+var isMute;
+isMute = false;
 
 playground.prototype = {
   preload: function() {
@@ -182,17 +184,34 @@ function pause(){
     // When the pause button is pressed, we pause the game
     game.paused = true;
     menu = game.add.group();
+    let tmp;
     for (var i = 0; i < pause_buttons.length; i++) {
-      let tmp = game.make.button(
-        210+ 80*i,
-        game.world.height-90,
-        pause_buttons[i].key,
-        pause_buttons[i].action,
-        this,
-        pause_buttons[i].frames[0],
-        pause_buttons[i].frames[1],
-        pause_buttons[i].frames[2]
-      );
+      if (i == 1 && isMute == true){
+        console.log("i = " + i + " et passe dans le if & ismute="+isMute);
+        tmp = game.make.button(
+          210+ 80*i,
+          game.world.height-90,
+          pause_buttons[i].key,
+          pause_buttons[i].action,
+          this,
+          8,
+          6,
+          7
+        );
+      }
+      else {
+        console.log("i = " + i + " et passe dans le else & ismute="+isMute);
+        tmp = game.make.button(
+          210+ 80*i,
+          game.world.height-90,
+          pause_buttons[i].key,
+          pause_buttons[i].action,
+          this,
+          pause_buttons[i].frames[0],
+          pause_buttons[i].frames[1],
+          pause_buttons[i].frames[2]
+        );
+      };
       menu.add(tmp);
     }
     //pause_label.hide();
@@ -248,9 +267,13 @@ function unpause(event){
 
 function mute() {
   if (menu.children[1].frame <= 5) {
-    menu.children[1].setFrames(8,6,7)
+    menu.children[1].setFrames(8,6,7);
+    music.pause();
+    isMute = true;
   } else {
-    menu.children[1].setFrames(5,3,4)
+    menu.children[1].setFrames(5,3,4);
+    music.resume();
+    isMute = false;
   }
 }
 
@@ -269,5 +292,5 @@ function selectLvl(){
 function backToMenu(){
   music.stop();
   game.paused = false;
-  game.state.start('Menu')
+  game.state.start('Menu');
 }
