@@ -132,6 +132,7 @@ function updateHousesLeft(){
 }
 
 function generateCity(nbBuildings){
+  console.log('Generating city...');
   var buildings = [
     'Building1',
     'ColonialHouse',
@@ -280,7 +281,7 @@ function mute() {
 function restartLvl(){
   music.stop();
   game.paused = false;
-  game.state.start('Game');
+  game.state.start('Game',true,true);
 }
 
 function selectLvl(){
@@ -292,5 +293,5 @@ function selectLvl(){
 function backToMenu(){
   music.stop();
   game.paused = false;
-  game.state.start('Menu');
+  game.state.start('Menu',true,true)
 }
