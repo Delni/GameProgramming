@@ -21,7 +21,7 @@ menu.prototype = {
 }
 
 function playGame() {
-  game.state.start('Game');
+  game.state.start('LvlSelect');
 }
 
 function helpGame(){
