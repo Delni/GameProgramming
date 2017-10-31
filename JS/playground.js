@@ -4,15 +4,21 @@ var playground = function(){};
 
 // Global definitions for later use
 var isOverlaping = false;
-var score = 25;
-var houses = 10;
 var ended = false;
+var score, left, houses;
+var currentLvl;
 var isMute;
 isMute = false;
 
 playground.prototype = {
   preload: function() {
     console.log('Game is loaded');
+  },
+
+  init: function(lvl){
+    left = 1.2*lvl;
+    houses = lvl;
+    currentLvl = lvl;
   },
 
   create: function(){
@@ -33,12 +39,17 @@ playground.prototype = {
     // Generate the city
     city = game.add.group();
     city.enableBody = true;
-    generateCity(houses);
+    let coords = generateCity(houses);
 
     // Here we create the ground.
     var ground = platforms.create(0, game.world.height - 64, 'ground');
     game.add.sprite(0, game.world.height-50-44,'road');
 
+    var lastBuildingLayer = game.add.group()
+    var lastBuilding = lastBuildingLayer.create(coords[0], coords[1],'lastBuilding_back');
+    game.physics.arcade.enable(lastBuilding);
+    lastBuilding.body.velocity.x=-350;
+    lastBuilding.body.acceleration.set(-10,0);
     //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
     //ground.scale.setTo(2, 2);
 
@@ -64,8 +75,8 @@ playground.prototype = {
     player.animations.add('dash', [14, 15, 16, 17, 18], 12, true);
 
     //  The score
-    leftText = game.add.text(16, 16, '🗞 Left: 25', { fontSize: '32px', fill: '#000' });
-    houseText = game.add.text(16, 48, '🏠 Houses: 10', { fontSize: '32px', fill: '#000' });
+    leftText = game.add.text(16, 16, '🗞 Left: '+left, { fontSize: '32px', fill: '#000' });
+    houseText = game.add.text(16, 48, '🏠 Houses: '+houses, { fontSize: '32px', fill: '#000' });
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
@@ -73,6 +84,10 @@ playground.prototype = {
 
     // UI
     midlayer = game.add.group();
+    lastBuildingF = midlayer.create(coords[0], coords[1],'lastBuilding_front');
+    game.physics.arcade.enable(lastBuildingF);
+    lastBuildingF.body.velocity.x=-350;
+    lastBuildingF.body.acceleration.set(-10,0);
     pause_group = game.add.group();
     pause_button = game.make.button(game.world.width-69,5,'buttonPause',pause,this,2,1,0);
     pause_button.scale.setTo(0.5,0.5);
@@ -127,8 +142,8 @@ function collectStar (player, star) {
     star.kill();
 
     //Add and update the score
-    score --;
-    leftText.text = '🗞 Left: ' + score;
+    left --;
+    leftText.text = '🗞 Left: ' + left;
 
 }
 
@@ -151,14 +166,16 @@ function generateCity(nbBuildings){
   let currentBuilding;
   for (var i = 0; i < nbBuildings; i++) {
     let rand = Math.round(Math.random() * (buildings.length-1));
-    let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (385)); //10px margin between each
+    let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
     let yPosition = game.world.height - 64 - 30 - game.cache.getImage(buildings[rand]).height;
     currentBuilding = city.create(xPosition, yPosition,buildings[rand]);
     game.physics.arcade.enable(currentBuilding);
     currentBuilding.body.velocity.x=-350;
     currentBuilding.body.acceleration.set(-10,0);
   }
-
+  let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
+  let yPosition = game.world.height+64 - game.cache.getImage('lastBuilding_back').height;
+  return [xPosition,yPosition];
 }
 
 const pause_buttons = [
@@ -196,7 +213,6 @@ function pause(){
     let tmp;
     for (var i = 0; i < pause_buttons.length; i++) {
       if (i == 1 && isMute == true){
-        console.log("i = " + i + " et passe dans le if & ismute="+isMute);
         tmp = game.make.button(
           210+ 80*i,
           game.world.height-90,
@@ -209,7 +225,6 @@ function pause(){
         );
       }
       else {
-        console.log("i = " + i + " et passe dans le else & ismute="+isMute);
         tmp = game.make.button(
           210+ 80*i,
           game.world.height-90,
@@ -289,17 +304,17 @@ function mute() {
 function restartLvl(){
   music.stop();
   game.paused = false;
-  game.state.start('Game',true,true);
+  game.state.start('Game',true,false,currentLvl);
 }
 
 function selectLvl(){
-  //music.stop();
-  //game.paused = false;
-  //game.state.start('LvlSelect');
+  music.stop();
+  game.paused = false;
+  game.state.start('LvlSelect');
 }
 
 function backToMenu(){
   music.stop();
   game.paused = false;
-  game.state.start('Menu',true,true)
+  game.state.start('Menu',true,false)
 }

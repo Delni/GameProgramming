@@ -11,17 +11,22 @@ preload.prototype = {
     game.load.image('ground', '../JS/assets/Decor/pedWayDown.png');
     game.load.image('stars', '../JS/assets/Elements/star.png');
     game.load.image('road', '../JS/assets/Decor/upPedWay.png');
+    game.load.image('lastBuilding_back', '../JS/assets/Decor/Buildings/Last_up.png');
+    game.load.image('lastBuilding_front', '../JS/assets/Decor/Buildings/Last_down.png');
+    game.load.image('road', '../JS/assets/Decor/upPedWay.png');
     game.load.spritesheet('dude', '../JS/assets/Player/player_spritesheet.png', 138, 150);
     game.load.spritesheet('newspaper', '../JS/assets/Elements/newspaper_spritesheet.png', 96, 96);
     // UI
     game.load.image('menuWP','../JS/assets/MenuWP.png');
     game.load.image('helper','../JS/assets/HelpWP.png');
     game.load.image('pause','../JS/assets/PauseWP.png');
+    game.load.image('LevelWP','../JS/assets/LvlWP.png');
     game.load.spritesheet('buttonPlay', '../JS/assets/Inputs/Play.png', 195, 72);
     game.load.spritesheet('buttonBack', '../JS/assets/Inputs/Back.png', 195, 72);
     game.load.spritesheet('buttonHelp', '../JS/assets/Inputs/Help.png', 195, 72);
     game.load.spritesheet('buttonPause', '../JS/assets/Inputs/PlayPause.png', 128, 128);
     game.load.spritesheet('buttons', '../JS/assets/Inputs/buttons_spritesheet.png', 64, 64);
+    game.load.spritesheet('lvlButtons', '../JS/assets/Inputs/LvlButtons_spritesheet.png', 144,144);
     game.load.image('menuItems', '../JS/assets/Inputs/Menu.png');
 
     //  Firefox doesn't support mp3 files, so use ogg

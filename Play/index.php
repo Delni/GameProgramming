@@ -43,6 +43,7 @@
   <script src="../JS/win.js"></script>
   <script src="../JS/lose.js"></script>
   <script src="../JS/helper.js"></script>
+  <script src="../JS/levels.js"></script>
   <script src="../JS/core.js"></script>
 
   <!-- <script src="../JS/game.js"></script> -->
