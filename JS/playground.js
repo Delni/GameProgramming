@@ -23,7 +23,7 @@ playground.prototype = {
 
   create: function(){
     music = game.add.audio('suzyMusic');
-    music.play();
+    music.fadeIn(1000);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -94,6 +94,7 @@ playground.prototype = {
     pause_group.add(pause_button);
     // Add a input listener that can help us return from being paused
     game.input.onDown.add(unpause, self);
+    game.camera.flash(0x000000, 1000, false);
   },
 
   update: function(){
@@ -104,7 +105,9 @@ playground.prototype = {
       ended = true;
       setTimeout(() => {
         game.state.start('Win')
-      },4000)
+        music.pause();
+      },3000)
+      music.fadeOut(2000);
       game.camera.fade(0x000000, 2500);
     }
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function

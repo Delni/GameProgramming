@@ -6,6 +6,6 @@ win.prototype = {
   },
 
   create: function(){
-
+    game.state.start('Menu')
   },
 }
