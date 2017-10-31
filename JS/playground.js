@@ -6,6 +6,7 @@ var playground = function(){};
 var isOverlaping = false;
 var score = 25;
 var houses = 10;
+var ended = false;
 var isMute;
 isMute = false;
 
@@ -83,7 +84,14 @@ playground.prototype = {
   update: function(){
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
-
+    //Test if the runner has arrived the end of the run
+    if (!ended && game.physics.arcade.overlap(lastBuildingF,player)) {
+      ended = true;
+      setTimeout(() => {
+        game.state.start('Win')
+      },4000)
+      game.camera.fade(0x000000, 2500);
+    }
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
