@@ -9,6 +9,14 @@ var score, left, houses;
 var currentLvl;
 var isMute;
 isMute = false;
+const musics = [
+  'suzyMusic',
+  'bootySwingMusic',
+  'dirtyStopOutMusic',
+  'dragonsMusic',
+  'geraldinesRoutineMusic',
+  'sweetRascalMusic'
+]
 
 playground.prototype = {
   preload: function() {
@@ -16,13 +24,14 @@ playground.prototype = {
   },
 
   init: function(lvl){
-    left = 1.2*lvl;
-    houses = lvl;
+    left = 12*lvl;
+    houses = 10*lvl;
     currentLvl = lvl;
   },
 
   create: function(){
-    music = game.add.audio('suzyMusic');
+    ended = false;
+    music = game.add.audio(musics[(currentLvl-1)%6]);
     music.fadeIn(1000);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
