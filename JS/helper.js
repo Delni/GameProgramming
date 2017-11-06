@@ -2,12 +2,12 @@ var helper = function(){};
 
 helper.prototype = {
   preload: function() {},
-  
+
   create: function() {
     game.add.sprite(0, 0, 'helper');
     group = game.add.group();
 
-    var backButton =  game.make.button(0,0,'buttonBack',backGame,this,2,0,1);
+    var backButton =  game.make.button(0,0,'large_buttons',backGame,this,8,6,7);
     //Player
     playerU = game.add.sprite(550, 60, 'dude');
     playerD = game.add.sprite(200, 175, 'dude');
