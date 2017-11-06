@@ -81,7 +81,7 @@ playground.prototype = {
     player.animations.add('left', [22, 23, 24, 25, 26, 27, 28, 29], 12, true);
     player.animations.add('right', [22, 23, 24, 25, 26, 27, 28, 29], 12, true);
     player.animations.add('up', [7, 6, 11, 12, 13], 12, true);
-    player.animations.add('dash', [14, 15, 16, 17, 18], 12, true);
+    player.animations.add('dash', [16, 17], 12, true);
 
     //  The score
     leftText = game.add.text(16, 16, '🗞 Left: '+left, { fontSize: '32px', fill: '#000' });
@@ -119,7 +119,7 @@ playground.prototype = {
       music.fadeOut(2000);
       game.camera.fade(0x000000, 2500);
     }
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+    //  Checks to see if the player overlaps with any of the buildings, if he does call the collectStar function
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
       isOverlaping = true;
@@ -127,23 +127,20 @@ playground.prototype = {
       isOverlaping = false;
     }
 
-    //  Reset the players velocity (movement)
-    if (player.body.position.y >= 386) {
+
+    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 386) {
+      //  Allow the player to jump if they are touching the ground.
+      player.body.velocity.y = -350;
+      player.animations.play('up');
+    } else if(game.input.keyboard.isDown(Phaser.Keyboard.X) && player.body.position.y >= 386){
+      // Allow the player to dash if they are touching the ground.
+      player.animations.play('dash')
+    } else if (player.body.position.y >= 386) {
+      // If the player is not jumping nor dashing, make it run :
       player.animations.play('right');
     } else {
+      //Default : stand still
       player.frame = 13;
-    }
-
-    //  Allow the player to jump if they are touching the ground.
-    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 386)
-    {
-        player.body.velocity.y = -350;
-        player.animations.play('up');
-    }
-
-    if(game.input.keyboard.isDown(Phaser.Keyboard.X) && player.body.position.y >= 386)
-    {
-      player.frame = (player.frame === 17) ? 16 : 17;
     }
   }
 }
