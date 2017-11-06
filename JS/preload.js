@@ -21,10 +21,9 @@ preload.prototype = {
     game.load.image('helper','../JS/assets/HelpWP.png');
     game.load.image('pause','../JS/assets/PauseWP.png');
     game.load.image('LevelWP','../JS/assets/LvlWP.png');
-    game.load.spritesheet('buttonPlay', '../JS/assets/Inputs/Play.png', 195, 72);
-    game.load.spritesheet('buttonBack', '../JS/assets/Inputs/Back.png', 195, 72);
-    game.load.spritesheet('buttonHelp', '../JS/assets/Inputs/Help.png', 195, 72);
+    game.load.image('WinWP','../JS/assets/WinWP.png');
     game.load.spritesheet('buttonPause', '../JS/assets/Inputs/PlayPause.png', 128, 128);
+    game.load.spritesheet('large_buttons', '../JS/assets/Inputs/large_buttons_spritesheet.png', 195, 72);
     game.load.spritesheet('buttons', '../JS/assets/Inputs/buttons_spritesheet.png', 64, 64);
     game.load.spritesheet('lvlButtons', '../JS/assets/Inputs/LvlButtons_spritesheet.png', 144,144);
     game.load.image('menuItems', '../JS/assets/Inputs/Menu.png');
