@@ -16,6 +16,8 @@ preload.prototype = {
     game.load.image('road', '../JS/assets/Decor/upPedWay.png');
     game.load.spritesheet('dude', '../JS/assets/Player/player_spritesheet.png', 138, 150);
     game.load.spritesheet('newspaper', '../JS/assets/Elements/newspaper_spritesheet.png', 96, 96);
+    //Font
+    game.load.bitmapFont('ParkLane','../JS/assets/font/parklane.png','../JS/assets/font/parklane.fnt')
     // UI
     game.load.image('menuWP','../JS/assets/MenuWP.png');
     game.load.image('helper','../JS/assets/HelpWP.png');
