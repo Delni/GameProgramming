@@ -113,7 +113,7 @@ playground.prototype = {
     if (!ended && game.physics.arcade.overlap(lastBuildingF,player)) {
       ended = true;
       setTimeout(() => {
-        game.state.start('Win')
+        game.state.start('Win',true,false,42)
         music.pause();
       },3000)
       music.fadeOut(2000);
