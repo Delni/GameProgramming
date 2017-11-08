@@ -32,8 +32,10 @@ playground.prototype = {
 
   create: function(){
     ended = false;
-    music = game.add.audio(musics[(currentLvl-1)%6]);
-    music.fadeIn(1000);
+    if (!isMute) {
+      music = game.add.audio(musics[(currentLvl-1)%6]);
+      music.fadeIn(1000);
+    }
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -80,7 +82,7 @@ playground.prototype = {
     //  Player physics properties.
     player.enableBody = true;
     player.body.bounce.y = 0;
-    player.body.gravity.y = 300;
+    player.body.gravity.y = 550;
     player.body.collideWorldBounds = true;
 
     //  Our four animations, walking left and right, jumping and sliding.
@@ -125,6 +127,9 @@ playground.prototype = {
       music.fadeOut(2000);
       game.camera.fade(0x000000, 2500);
     }
+    //Reset runner gravity :
+    player.body.gravity.y = 550;
+
     //  Checks to see if the player overlaps with any of the buildings, if he does call the collectStar function
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
@@ -136,14 +141,19 @@ playground.prototype = {
       game.state.start('Lose');
     }
 
-    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 386) {
+    if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 385) {
       //  Allow the player to jump if they are touching the ground.
-      player.body.velocity.y = -350;
+      player.body.velocity.y = -550;
       player.animations.play('up');
-    } else if(game.input.keyboard.isDown(Phaser.Keyboard.X) && player.body.position.y >= 386){
-      // Allow the player to dash if they are touching the ground.
-      player.animations.play('dash')
-    } else if (player.body.position.y >= 386) {
+    } else if(game.input.keyboard.isDown(Phaser.Keyboard.X)){
+      if (player.body.position.y >= 385) {
+        // Allow the player to dash if they are touching the ground.
+        player.animations.play('dash')
+      } else {
+        // Quick down
+        player.body.gravity.y = 2000;
+      }
+    } else if (player.body.position.y >= 385) {
       // If the player is not jumping nor dashing, make it run :
       player.animations.play('right');
     } else {
