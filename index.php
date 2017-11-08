@@ -18,7 +18,7 @@
 
           <div id="mainTitle" class="column is-6">
             <div>
-              <h1 class="title is-1">Welcome to XXX</h1>
+              <h1 class="title is-1">Welcome to News Runner</h1>
               <h2 class="subtitle">UWS's Project</h2>
               <a class="button is-dark is-large title has-text-light" id="playbutton" href="/GameProgramming/Play/">Go to game !</a>
             </div>
