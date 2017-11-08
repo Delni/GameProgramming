@@ -26,6 +26,7 @@ playground.prototype = {
   init: function(lvl){
     left = 12*lvl;
     houses = 10*lvl;
+    obstacles = 2*lvl;
     currentLvl = lvl;
   },
 
@@ -53,6 +54,11 @@ playground.prototype = {
     // Here we create the ground.
     var ground = platforms.create(0, game.world.height - 64, 'ground');
     game.add.sprite(0, game.world.height-50-44,'road');
+
+    // Generate the obstacles
+    obstacleGroup = game.add.group();
+    obstacleGroup.enableBody = true;
+    let obstacleCoords = generateObstacleGroup(houses);
 
     var lastBuildingLayer = game.add.group()
     var lastBuilding = lastBuildingLayer.create(coords[0], coords[1],'lastBuilding_back');
@@ -126,7 +132,9 @@ playground.prototype = {
     } else {
       isOverlaping = false;
     }
-
+    if (game.physics.arcade.collide(player, obstacleGroup)){
+      game.state.start('Lose');
+    }
 
     if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 386) {
       //  Allow the player to jump if they are touching the ground.
@@ -185,6 +193,24 @@ function generateCity(nbBuildings){
   let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
   let yPosition = game.world.height+64 - game.cache.getImage('lastBuilding_back').height;
   return [xPosition,yPosition];
+}
+
+function generateObstacleGroup(nbObstacles){
+  var obstacles = [
+    'box',
+    'bin',
+    'lampPost'
+  ];
+  let currentObstacle;
+  for (var i = 0; i < nbObstacles; i++) {
+    let rand = Math.round(Math.random() * (obstacles.length-1));
+    let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (800)); //px margin between each
+    let yPosition = game.world.height-50 - game.cache.getImage(obstacles[rand]).height;
+    currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
+    game.physics.arcade.enable(currentObstacle);
+    currentObstacle.body.velocity.x=-350;
+    currentObstacle.body.acceleration.set(-10,0);
+  }
 }
 
 const pause_buttons = [
