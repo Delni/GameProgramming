@@ -39,8 +39,13 @@ playground.prototype = {
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //  A simple background for our game
+    //  A background with parrallax for our game
     game.add.sprite(0, 0, 'sky');
+    background_lvl5 = game.add.group();
+    background_lvl4 = game.add.group();
+    background_lvl3 = game.add.group();
+    background_lvl2 = game.add.group();
+    background_lvl1 = game.add.group();
 
     //  The platforms group contains the ground and the 2 ledges we can jump on
     platforms = game.add.group();
@@ -190,7 +195,7 @@ function generateCity(nbBuildings){
     'MansardeHouse',
     'RedHouse'
   ];
-  let currentBuilding;
+  let currentBuilding, back1, back2, back3, back4, back5;
   for (var i = 0; i < nbBuildings; i++) {
     let rand = Math.round(Math.random() * (buildings.length-1));
     let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
@@ -199,6 +204,22 @@ function generateCity(nbBuildings){
     game.physics.arcade.enable(currentBuilding);
     currentBuilding.body.velocity.x=-350;
     currentBuilding.body.acceleration.set(-10,0);
+    // Add background
+    back1 = background_lvl1.create(game.world.width * i,0,'trees');
+    game.physics.arcade.enable(back1);
+    back1.body.velocity.x=-300;
+    back2 = background_lvl2.create(game.world.width * i,0,'distanttrees');
+    game.physics.arcade.enable(back2);
+    back2.body.velocity.x=-250;
+    back3 = background_lvl3.create(game.world.width * i,0,'bushes');
+    game.physics.arcade.enable(back3);
+    back3.body.velocity.x=-200;
+    back4 = background_lvl4.create(game.world.width * i,0,'hugeclouds');
+    game.physics.arcade.enable(back4);
+    back4.body.velocity.x=-100;
+    back5 = background_lvl5.create(game.world.width * i,0,'clouds');
+    game.physics.arcade.enable(back5);
+    back5.body.velocity.x=-175;
   }
   let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
   let yPosition = game.world.height+64 - game.cache.getImage('lastBuilding_back').height;
@@ -218,7 +239,7 @@ function generateObstacleGroup(nbObstacles){
     let yPosition = game.world.height-50 - game.cache.getImage(obstacles[rand]).height;
     currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
     game.physics.arcade.enable(currentObstacle);
-    currentObstacle.body.velocity.x=-350;
+    currentObstacle.body.velocity.x=-450;
     currentObstacle.body.acceleration.set(-10,0);
   }
 }
