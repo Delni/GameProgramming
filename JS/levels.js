@@ -37,5 +37,9 @@ function startLvl7(){ newLevel(7)}
 function startLvl8(){ newLevel(8)}
 
 function newLevel(lvl) {
-  game.state.start('Game',true,false,lvl)
+  if (lvl === 1) {
+    game.state.start('Explanations')
+  } else {
+    game.state.start('Game',true,false,lvl)
+  }
 }
