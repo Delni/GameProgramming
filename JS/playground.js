@@ -5,7 +5,8 @@ var playground = function(){};
 // Global definitions for later use
 var isOverlaping = false;
 var ended = false;
-var score, left, houses;
+var throwing = false;
+var score, left, houses, delivered;
 var currentLvl;
 var isMute;
 isMute = false;
@@ -32,6 +33,7 @@ playground.prototype = {
 
   create: function(){
     ended = false;
+    delivered = 0;
     if (!isMute) {
       music = game.add.audio(musics[(currentLvl-1)%6]);
       music.fadeIn(1000);
@@ -78,6 +80,9 @@ playground.prototype = {
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
 
+    // Add the layer for the thrown newspapers:
+    thrownNewspaper = game.add.group();
+
     // The player and its settings
     player = game.add.sprite(138, game.world.height - 240, 'dude');
 
@@ -93,7 +98,7 @@ playground.prototype = {
     //  Our four animations, walking left and right, jumping and sliding.
     player.animations.add('left', [22, 23, 24, 25, 26, 27, 28, 29], 12, true);
     player.animations.add('right', [22, 23, 24, 25, 26, 27, 28, 29], 12, true);
-    player.animations.add('up', [7, 6, 11, 12, 13], 12, true);
+    player.animations.add('up', [7, 6, 11, 12, 13], 12, false);
     player.animations.add('dash', [16, 17], 12, true);
 
     //  The score
@@ -122,30 +127,39 @@ playground.prototype = {
   update: function(){
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(thrownNewspaper, platforms);
+    checkNewsPaperStatus();
     //Test if the runner has arrived the end of the run
     if (!ended && game.physics.arcade.overlap(lastBuildingF,player)) {
       ended = true;
       setTimeout(() => {
-        game.state.start('Win',true,false,42)
+        for (var i = 0; i < city.children.length; i++) {
+          delivered = (city.children[i].isDelivered) ? delivered+1: delivered;
+        }
+        game.state.start('Win',true,false,delivered,left);
         music.pause();
       },3000)
       music.fadeOut(2000);
       game.camera.fade(0x000000, 2500);
     }
+
     //Reset runner gravity :
     player.body.gravity.y = 550;
 
-    //  Checks to see if the player overlaps with any of the buildings, if he does call the collectStar function
+    //  Checks to see if the player overlaps with any of the buildings
     if (game.physics.arcade.overlap(player, city)) {
       updateHousesLeft()
       isOverlaping = true;
     } else {
       isOverlaping = false;
     }
+
+    // If the player run through any obstacle, the game is over.
     if (game.physics.arcade.collide(player, obstacleGroup)){
       game.state.start('Lose');
     }
 
+    // Animations manager
     if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && player.body.position.y >= 385) {
       //  Allow the player to jump if they are touching the ground.
       player.body.velocity.y = -550;
@@ -165,17 +179,54 @@ playground.prototype = {
       //Default : stand still
       player.frame = 13;
     }
+
+    // Allow player to throw newspaper (two tests: AZERTY or QWERTY)
+    if(!throwing && (game.input.keyboard.isDown(Phaser.Keyboard.W) || game.input.keyboard.isDown(Phaser.Keyboard.Z))){
+      createNewsPaper();
+      throwing = true;
+    } else if (!(game.input.keyboard.isDown(Phaser.Keyboard.W) || game.input.keyboard.isDown(Phaser.Keyboard.Z))){
+      throwing = false;
+    }
+  }
+}
+
+function createNewsPaper() {
+  if (left>0) {
+    let newspaper = thrownNewspaper.create(player.position.x,player.position.y,'newspaper');
+    game.physics.arcade.enable(newspaper);
+    newspaper.enableBody = true;
+    newspaper.body.bounce.y = 0.25;
+    newspaper.body.gravity.y = 550;
+    newspaper.body.velocity = {x:400*200/-city.children[0].body.velocity.x, y: -300};
+    newspaper.body.acceleration.set(-250,0);
+    newspaper.animations.add('flying',[0,1,2,3,4,5,6,7],7,false);
+    newspaper.play('flying');
+    left --;
+    leftText.text = '🗞 Left: ' + left;
+  }
+}
+
+function checkNewsPaperStatus(){
+  for (var i = 0; i < thrownNewspaper.children.length; i++) {
+    if (thrownNewspaper.children[i].body.touching.down) {
+      thrownNewspaper.children[i].body.velocity.x = city.children[0].body.velocity.x
+      for (var j = 0; j < city.children.length; j++) {
+        if (!city.children[j].isDelivered && game.physics.arcade.overlap(thrownNewspaper.children[i],city.children[j])) {
+          city.children[j].isDelivered = true;
+          if (!isMute) {
+            game.add.audio('chaching').play().volume = 0.42;
+          }
+          console.log("Delivered ! ");
+        }
+      }
+    }
   }
 }
 
 function collectStar (player, star) {
-
     //Removes the star from the screen
     star.kill();
-
     //Add and update the score
-    left --;
-    leftText.text = '🗞 Left: ' + left;
 
 }
 
@@ -204,26 +255,30 @@ function generateCity(nbBuildings){
     game.physics.arcade.enable(currentBuilding);
     currentBuilding.body.velocity.x=-350;
     currentBuilding.body.acceleration.set(-10,0);
+    // For later, to check if the newspaper has arrived this house
+    currentBuilding.isDelivered = false;
     // Add background
-    back1 = background_lvl1.create(game.world.width * i,0,'trees');
-    game.physics.arcade.enable(back1);
-    back1.body.velocity.x=-300;
-    back2 = background_lvl2.create(game.world.width * i,0,'distanttrees');
-    game.physics.arcade.enable(back2);
-    back2.body.velocity.x=-250;
-    back3 = background_lvl3.create(game.world.width * i,0,'bushes');
-    game.physics.arcade.enable(back3);
-    back3.body.velocity.x=-200;
-    back4 = background_lvl4.create(game.world.width * i,0,'hugeclouds');
-    game.physics.arcade.enable(back4);
-    back4.body.velocity.x=-100;
-    back5 = background_lvl5.create(game.world.width * i,0,'clouds');
-    game.physics.arcade.enable(back5);
-    back5.body.velocity.x=-175;
+    parrallaxBackground(i);
   }
   let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
   let yPosition = game.world.height+64 - game.cache.getImage('lastBuilding_back').height;
   return [xPosition,yPosition];
+}
+
+function parrallaxBackground(token) {
+  const currentLayer = [
+    [background_lvl1,'trees',-300],
+    [background_lvl2,'distanttrees',-250],
+    [background_lvl3,'bushes',-200],
+    [background_lvl4,'hugeclouds',-100],
+    [background_lvl5,'clouds',-174]
+  ];
+  let tmp;
+  for (var i = 0; i < currentLayer.length; i++) {
+    tmp = currentLayer[i][0].create(game.world.width * token,0,currentLayer[i][1]);
+    game.physics.arcade.enable(tmp);
+    tmp.body.velocity.x=currentLayer[i][2];
+  }
 }
 
 function generateObstacleGroup(nbObstacles){

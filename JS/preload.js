@@ -50,6 +50,7 @@ preload.prototype = {
     game.load.audio('geraldinesRoutineMusic', ['../assets/musics/Geraldines_Routine.mp3', '../assets/musics/Geraldines_Routine.ogg']);
     game.load.audio('sweetRascalMusic', ['../assets/musics/Sweet_Rascal.mp3', '../assets/musics/Sweet_Rascal.ogg']);
 
+    game.load.audio('chaching', '../assets/sounds/Cash Register Cha Ching.wav');
     // game.load.audio('runnerSound', ['../assets/sounds/Coureur.mp3', '../assets/sounds/Coureur.ogg']);
     // game.load.audio('thrownNewspaperSound', ['../assets/sounds/Journal_jete.wav', '../assets/sounds/Journal_jete.ogg']);
     // game.load.audio('thrownNewspaperTableSound', ['../assets/sounds/Journal_jete_sur_table.wav', '../assets/sounds/Journal_jete_sur_table.ogg']);
