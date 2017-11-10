@@ -2,11 +2,11 @@ var explanations = function(){};
 
 explanations.prototype = {
   preload: function() {
-    game.load.image('newspaper','../JS/assets/NewsWP.png');
+    game.load.image('newspaperWP','../JS/assets/NewsWP.png');
   },
 
   create: function() {
-    game.add.sprite(0, 0, 'newspaper');
+    game.add.sprite(0, 0, 'newspaperWP');
     game.input.onDown.add(startGame, self);
     game.camera.flash(0x000000, 500, false);
   }

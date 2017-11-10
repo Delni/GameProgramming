@@ -1,5 +1,7 @@
 var LvlSelect = function(){};
 
+var needExplanation = true;
+
 LvlSelect.prototype = {
   preload: function(){},
   create: function(){
@@ -37,7 +39,10 @@ function startLvl7(){ newLevel(7)}
 function startLvl8(){ newLevel(8)}
 
 function newLevel(lvl) {
-  if (lvl === 1) {
+  // Reset score if levels are choosen : total score only in a row
+  totalscore = 0;
+  if (needExplanation) {
+    needExplanation = false;
     game.state.start('Explanations')
   } else {
     game.state.start('Game',true,false,lvl)
