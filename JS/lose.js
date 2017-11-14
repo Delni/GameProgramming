@@ -1,4 +1,7 @@
 var lose = function(){};
+const musicsLose = [
+  'sweetRascalMusic'
+];
 
 lose.prototype = {
   preload: function() {
@@ -10,10 +13,14 @@ lose.prototype = {
     game.add.sprite(0, 0, 'LoseWP');
     group = game.add.group();
 
+    music = game.add.audio(musicsLose[0]);
+    music.play();
+
     var replayButton = game.make.button(game.world.centerX - 200, game.world.height - 150, 'large_buttons', replay, this, 14, 12, 13);
     var menuButton = game.make.button(game.world.centerX + 5, game.world.height - 150, 'large_buttons', backGame, this, 17, 15, 16);
 
     group.add(replayButton);
     group.add(menuButton);
+
   },
 }
