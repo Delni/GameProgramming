@@ -55,13 +55,7 @@ playground.prototype = {
     //  We will enable physics for any object that is created in this group
     platforms.enableBody = true;
 
-    // Generate the city
-    city = game.add.group();
-    city.enableBody = true;
-    let coords = generateCity(houses);
-
     // Here we create the ground.
-
     var ground = platforms.create(0, game.world.height - 64, 'ground');
     roadGroup = game.add.group();
     roadGroup.enableBody = true;
@@ -69,16 +63,17 @@ playground.prototype = {
     upRoadGroup = game.add.group();
     upRoadGroup.enableBody = true;
 
-    putPedestrianWays(houses);
+    // Generate the city
+    city = game.add.group();
+    city.enableBody = true;
+    let coords = generateCity(houses);
 
     // Generate the obstacles
     obstacleGroup = game.add.group();
     obstacleGroup.enableBody = true;
-    let obstacleCoords = generateObstacleGroup(houses);
-
     obstacleSide = game.add.group();
     obstacleSide.enableBody = true;
-    obstaclesBottomElements(currentLvl);
+    let obstacleCoords = generateObstacleGroup(houses);
 
     var lastBuildingLayer = game.add.group()
     var lastBuilding = lastBuildingLayer.create(coords[0], coords[1],'lastBuilding_back');
@@ -248,7 +243,7 @@ function updateHousesLeft(){
 }
 
 function generateCity(nbBuildings){
-  console.log('Generating city...');
+  // console.log('Generating city...');
   var buildings = [
     'Building1',
     'ColonialHouse',
@@ -262,7 +257,6 @@ function generateCity(nbBuildings){
     let rand = Math.round(Math.random() * (buildings.length-1));
     let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
     let yPosition = game.world.height - 64 - 30 - game.cache.getImage(buildings[rand]).height;
-    // console.log(buildings[rand]);
     currentBuilding = city.create(xPosition, yPosition,buildings[rand]);
     game.physics.arcade.enable(currentBuilding);
     currentBuilding.body.velocity.x=-350;
@@ -271,16 +265,17 @@ function generateCity(nbBuildings){
     currentBuilding.isDelivered = false;
     // Add background
     parrallaxBackground(i);
+    if (city.children[i].key == 'CrossingRoad'){
+      putPedestrianWays(i);
+    }
   }
   let xPosition = game.world.width * (i+1) + Math.round(Math.random() * (400)); //px margin between each
   let yPosition = game.world.height+64 - game.cache.getImage('lastBuilding_back').height;
   return [xPosition,yPosition];
 }
 
-function putPedestrianWays(nbBuildings){
-  for (var i = 0; i < nbBuildings; i++) {
-    if (city.children[i].key == 'CrossingRoad'){
-      let xPosition = city.children[i].body.x;
+function putPedestrianWays(buildingNumber){
+      let xPosition = city.children[buildingNumber].body.x;
       let currentPedway = roadGroup.create(xPosition, game.world.height - 64, 'roadDownCorner');
       game.physics.arcade.enable(currentPedway);
       currentPedway.body.velocity.x=-350;
@@ -289,8 +284,6 @@ function putPedestrianWays(nbBuildings){
       game.physics.arcade.enable(othercurrentPedWay);
       othercurrentPedWay.body.velocity.x=-350;
       othercurrentPedWay.body.acceleration.set(-10,0);
-    }
-  }
 }
 
 function parrallaxBackground(token) {
@@ -333,6 +326,11 @@ function generateObstacleGroup(nbBuildings){
     }
     if (obstacles[rand] == 'metroUp'){
       yPosition = game.world.height-215 - game.cache.getImage(obstacles[rand]).height;
+      currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
+      game.physics.arcade.enable(currentObstacle);
+      currentObstacle.body.velocity.x=-450;
+      currentObstacle.body.acceleration.set(-10,0);
+      obstaclesBottomElements(i);
       // //let yPositionSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
       // currentObstacle = obstacleGroup.create(xPosition, yPositionSide,'metroLeftSide');
       // game.physics.arcade.enable(currentObstacle);
@@ -347,36 +345,59 @@ function generateObstacleGroup(nbBuildings){
     }
     else {
        yPosition = game.world.height-50 - game.cache.getImage(obstacles[rand]).height;
+       currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
+       game.physics.arcade.enable(currentObstacle);
+       currentObstacle.body.velocity.x=-450;
+       currentObstacle.body.acceleration.set(-10,0);
     }
-    currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
-    game.physics.arcade.enable(currentObstacle);
-    currentObstacle.body.velocity.x=-450;
-    currentObstacle.body.acceleration.set(-10,0);
+    // currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
+    // game.physics.arcade.enable(currentObstacle);
+    // currentObstacle.body.velocity.x=-450;
+    // currentObstacle.body.acceleration.set(-10,0);
   }
 }
 
-function obstaclesBottomElements(nbBuildings){
-  for (var i = 0; i < nbBuildings * (1 - 0.4); i++) {
-    // console.log("Passe dans la boucle for de la fonction obstaclesBottomElements");
-    if (obstacleGroup.children[i].key == 'metroUp'){
+function obstaclesBottomElements(numberObstacles){
       // console.log("Passe dans le if dans la fonction obstaclesBottomElements");
-      let xPosition = obstacleGroup.children[i].x;
+      let xPositionLeftSide = obstacleGroup.children[numberObstacles].x;
       //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
-      let yPositionSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
+      let yPositionLeftSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
       //currentObstacle = obstacleGroup.create(xPosition, yPositionSide,'metroLeftSide');
-      let currentObstacle = obstacleSide.create(xPosition, yPositionSide,'metroLeftSide');
+      let currentObstacle = obstacleSide.create(xPositionLeftSide, yPositionLeftSide,'metroLeftSide');
       game.physics.arcade.enable(currentObstacle);
       currentObstacle.body.velocity.x=-450;
       currentObstacle.body.acceleration.set(-10,0);
-      let xPositionSide = xPosition + 70; //px margin between each
-      yPositionSide = game.world.height-70 - game.cache.getImage('metroRightSide').height;
-      currentObstacle = obstacleSide.create(xPositionSide, yPositionSide,'metroRightSide');
-      game.physics.arcade.enable(currentObstacle);
-      currentObstacle.body.velocity.x=-450;
-      currentObstacle.body.acceleration.set(-10,0);
-    }
-  }
+      let xPositionRightSide = xPositionLeftSide + 70; //px margin between each
+      let yPositionRightSide = game.world.height-70 - game.cache.getImage('metroRightSide').height;
+      let currentOtherObstacle = obstacleSide.create(xPositionRightSide, yPositionRightSide,'metroRightSide');
+      game.physics.arcade.enable(currentOtherObstacle);
+      currentOtherObstacle.body.velocity.x=-450;
+      currentOtherObstacle.body.acceleration.set(-10,0);
 }
+
+// Ancienne fonction
+// function obstaclesBottomElements(nbBuildings){
+//   for (var i = 0; i < nbBuildings * (1 - 0.4); i++) {
+//     // console.log("Passe dans la boucle for de la fonction obstaclesBottomElements");
+//     if (obstacleGroup.children[i].key == 'metroUp'){
+//       // console.log("Passe dans le if dans la fonction obstaclesBottomElements");
+//       let xPosition = obstacleGroup.children[i].x;
+//       //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
+//       let yPositionSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
+//       //currentObstacle = obstacleGroup.create(xPosition, yPositionSide,'metroLeftSide');
+//       let currentObstacle = obstacleSide.create(xPosition, yPositionSide,'metroLeftSide');
+//       game.physics.arcade.enable(currentObstacle);
+//       currentObstacle.body.velocity.x=-450;
+//       currentObstacle.body.acceleration.set(-10,0);
+//       let xPositionSide = xPosition + 70; //px margin between each
+//       yPositionSide = game.world.height-70 - game.cache.getImage('metroRightSide').height;
+//       currentObstacle = obstacleSide.create(xPositionSide, yPositionSide,'metroRightSide');
+//       game.physics.arcade.enable(currentObstacle);
+//       currentObstacle.body.velocity.x=-450;
+//       currentObstacle.body.acceleration.set(-10,0);
+//     }
+//   }
+// }
 
 const pause_buttons = [
   {
