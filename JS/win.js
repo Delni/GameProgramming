@@ -35,5 +35,8 @@ function nxtLvl() {
 }
 
 function replay() {
+  if(music !== 'undefined'){
+    music.stop();
+  }
   game.state.start('Game',true,false,currentLvl);
 }
