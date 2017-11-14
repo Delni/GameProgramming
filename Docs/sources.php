@@ -21,7 +21,16 @@
                 <p class="title">Birth of a Project</p>
                 <p>The idea to place our game in the late 1920's came from the visit of the Scotland Street
                    School Museum, with many examples of Macintosh's work</p><hr>
-                <img src="../assets/img/SSSM.jpg" alt="Scotland Street School Museam" class="image" style="margin:auto;margin-bottom : 0">
+                <img src="../assets/img/SSSM.jpg" alt="Scotland Street School Museum" class="image" style="margin:auto;margin-bottom : 0">
+              </div>
+            </article>
+            <article class="message is-dark has-no-background">
+              <div class="message-body">
+                <p class="title">Inspiration</p>
+                <p>You can find similarities in our game and the old game called <a href="https://en.wikipedia.org/wiki/Paperboy_(video_game)" class="has-text-info">Paper Boy</a>.<br>
+                  Some gameplay features for handling 2D runner are inspired by <a href="https://halfbrick.com/our-games/jetpack-joyride/" class="has-text-info">JetPack Joyride</a>.  </p>
+                <hr>
+                <img src="../assets/img/PaperboyGameplay.png" alt="PaperBoy" class="image" style="margin:auto;margin-bottom : 0">
               </div>
             </article>
             <article class="message is-dark has-no-background">
@@ -61,6 +70,7 @@
                     <li><a class="has-text-info" href="http://phaser.io">Phaser</a>, the game framework</li>
                     <li><a class="has-text-info" href="https://www.piskelapp.com/">Piskel</a></li>
                     <li>Character spritesheets by <a class="has-text-info" href="https://opengameart.org/content/hero-spritesheets-ars-notoria">Balmer</a> </li>
+                    <li>Parrallax background by <a class="has-text-info" href="https://raventale.itch.io/parallax-background">Liz Molnar</a> </li>
                   </ul>
                 </div>
                 <hr>
@@ -76,6 +86,7 @@
                     <li><a class="has-text-info" href="http://www.universal-soundbank.com/lecture.htm">Throwing newspaper</a>, universal-soundbank.com</li>
                     <li><a class="has-text-info" href="http://lasonotheque.org/detail-0687-grande-poubelle-a-pied.html">Garbage bin</a>, lasonotheque.org</li>
                     <li><a class="has-text-info" href="http://lasonotheque.org/detail-0896-moteur-ford-courrier.html">Car</a>, lasonotheque.org</li>
+                    <li><a class="has-text-info" href="http://soundbible.com/333-Cash-Register-Cha-Ching.html">Cha ching</a>, soundible.com</li>
                   </ul>
                 </div>
               </div>
