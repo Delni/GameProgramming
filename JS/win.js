@@ -15,7 +15,10 @@ win.prototype = {
   create: function(){
     game.add.sprite(0, 0, 'WinWP');
     group = game.add.group();
-
+    // unlocked next level :
+    if (currentLvl < 8) {
+      unlocked[currentLvl] = true;
+    }
     var nextButton = game.make.button(game.world.width - 200 , game.world.height - 77, 'large_buttons', nxtLvl, this, 11, 9, 10);
     var replayButton = game.make.button(5, game.world.height - 77, 'large_buttons', replay, this, 14, 12, 13);
     var menuButton = game.make.button(5 , 5 , 'large_buttons', backGame, this, 17, 15, 16);
