@@ -4,11 +4,8 @@ var totalscore = 0;
 win.prototype = {
   init: function(delivered_houses,extras) {
     this.houseBonus = delivered_houses * 16;
-    console.log(this.houseBonus);
     this.extraBonus = extras * 2;
-    console.log(this.extraBonus);
     this.lvlBonus = currentLvl * 100;
-    console.log(this.lvlBonus);
     totalscore += this.lvlBonus+this.houseBonus+this.extraBonus;
   },
 
