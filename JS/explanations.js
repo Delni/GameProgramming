@@ -1,3 +1,4 @@
+// Simple view with a newspaper containing the 'How-to'
 var explanations = function(){};
 
 explanations.prototype = {

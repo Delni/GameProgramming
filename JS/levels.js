@@ -1,6 +1,8 @@
+// Allow the player to choose among 8 levels
 var LvlSelect = function(){};
 
 var needExplanation = true;
+// Feel free to change below values to test locked levels
 var unlocked = [true,false,false,false,false,false,false,false];
 
 LvlSelect.prototype = {
@@ -19,25 +21,6 @@ LvlSelect.prototype = {
         group.add(lvl);
       }
     }
-
-    // var lvl1 = game.make.button(70, 170, 'lvlButtons', startLvl1, this, 1, 0, 1);
-    // var lvl2 = game.make.button(70+170*1, 170, 'lvlButtons', startLvl2, this, 3, 2, 3);
-    // var lvl3 = game.make.button(70+170*2, 170, 'lvlButtons', startLvl3, this, 5, 4, 5);
-    // var lvl4 = game.make.button(70+170*3, 170, 'lvlButtons', startLvl4, this, 7, 6, 7);
-    // var lvl5 = game.make.button(70, 170*2, 'lvlButtons', startLvl5, this, 9, 8, 9);
-    // var lvl6 = game.make.button(70+170*1, 170*2, 'lvlButtons', startLvl6, this, 11, 10, 11);
-    // var lvl7 = game.make.button(70+170*2, 170*2, 'lvlButtons', startLvl7, this, 13, 12, 13);
-    // var lvl8 = game.make.button(70+170*3, 170*2, 'lvlButtons', startLvl8, this, 15, 14, 15);
-    //
-    // // game.input.onDown.addOnce(removeGroup, this);
-    // group.add(lvl1);
-    // group.add(lvl2);
-    // group.add(lvl3);
-    // group.add(lvl4);
-    // group.add(lvl5);
-    // group.add(lvl6);
-    // group.add(lvl7);
-    // group.add(lvl8);
   },
 }
 

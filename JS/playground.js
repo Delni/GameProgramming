@@ -15,8 +15,7 @@ const musics = [
   'bootySwingMusic',
   'dirtyStopOutMusic',
   'dragonsMusic',
-  'geraldinesRoutineMusic',
-  'sweetRascalMusic'
+  'geraldinesRoutineMusic'
 ]
 
 playground.prototype = {
@@ -42,7 +41,7 @@ playground.prototype = {
     ended = false;
     delivered = 0;
     if (!isMute) {
-      music = game.add.audio(musics[(currentLvl-1)%6]);
+      music = game.add.audio(musics[(currentLvl-1)%5]);
       music.fadeIn(1000);
     }
     //  We're going to be using physics, so enable the Arcade Physics system
@@ -82,6 +81,7 @@ playground.prototype = {
     obstacleSide.enableBody = true;
     let obstacleCoords = generateObstacleGroup(houses);
 
+    // End of the level : the runner enter a specific building...
     var lastBuildingLayer = game.add.group()
     var lastBuilding = lastBuildingLayer.create(coords[0], coords[1],'lastBuilding_back');
     game.physics.arcade.enable(lastBuilding);
@@ -112,7 +112,7 @@ playground.prototype = {
     player.animations.add('up', [7, 6, 11, 12, 13], 12, false);
     player.animations.add('dash', [16, 17], 12, true);
 
-    //  The score
+    //  The labels
     leftText = game.add.text(16, 16, '🗞 Left: '+left, { fontSize: '32px', fill: '#000' });
     houseText = game.add.text(16, 48, '🏠 Houses: '+houses, { fontSize: '32px', fill: '#000' });
 
@@ -121,50 +121,51 @@ playground.prototype = {
     game.camera.follow(player);
 
     // UI
+    // Extra layer for 'pause' menu
     midlayer = game.add.group();
+    // The runner enters in : one part of this assets comes in front of the rest
     lastBuildingF = midlayer.create(coords[0], coords[1],'lastBuilding_front');
     game.physics.arcade.enable(lastBuildingF);
     lastBuildingF.body.velocity.x=-350;
     lastBuildingF.body.acceleration.set(-10,0);
+
+    // One button to trigger the pause
     pause_group = game.add.group();
     pause_button = game.make.button(game.world.width-69,5,'buttonPause',pause,this,2,1,0);
     pause_button.scale.setTo(0.5,0.5);
     pause_group.add(pause_button);
+
     // Add a input listener that can help us return from being paused
     game.input.onDown.add(unpause, self);
     game.camera.flash(0x000000, 1000, false);
   },
 
   update: function(){
-    //  Collide the player and the stars with the platforms
+    //  Collide the player and the newspaper with the platforms
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(thrownNewspaper, platforms);
+
+    // Handle the status of each newspaper
     checkNewsPaperStatus();
+
     //Test if the runner has arrived the end of the run
     if (!ended && game.physics.arcade.overlap(lastBuildingF,player)) {
-      ended = true;
-      setTimeout(() => {
-        for (var i = 0; i < city.children.length; i++) {
-          delivered = (city.children[i].isDelivered) ? delivered+1: delivered;
-        }
-        game.state.start('Win',true,false,delivered,left);
-        music.pause();
-      },3000)
-      music.fadeOut(2000);
-      game.camera.fade(0x000000, 2500);
+      ended = true,
+      goToWin();
     }
 
     //Reset runner gravity :
     player.body.gravity.y = 550;
 
     //  Checks to see if the player overlaps with any of the buildings
-    if (game.physics.arcade.overlap(player, city,(p, c) => {
+    if (!(game.physics.arcade.overlap(player, city,(p, c) => {
       if (!isOverlaping && c.key !== 'CrossingRoad') {
         updateHousesLeft();
       }
       isOverlaping = true;
-    })) {
-    } else {
+    }))) {
+      // If they are overlaping, Phaser should enter the arrow function. If not, it enter in the if
+      // so we can reset the Overlaping state.
       isOverlaping = false;
     }
 
@@ -541,4 +542,16 @@ function backToMenu(){
   music.stop();
   game.paused = false;
   game.state.start('Menu',true,false)
+}
+
+function goToWin(){
+  setTimeout(() => {
+    for (var i = 0; i < city.children.length; i++) {
+      delivered = (city.children[i].isDelivered) ? delivered+1: delivered;
+    }
+    game.state.start('Win',true,false,delivered,left);
+    music.pause();
+  },3000)
+  music.fadeOut(2000);
+  game.camera.fade(0x000000, 2500);
 }

@@ -1,3 +1,4 @@
+// Simple view showing different possible actions
 var helper = function(){};
 
 helper.prototype = {
