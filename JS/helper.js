@@ -26,5 +26,8 @@ helper.prototype = {
 }
 
 function backGame() {
+  if(music !== 'undefined'){
+    music.stop();
+  }
   game.state.start('Menu');
 }
