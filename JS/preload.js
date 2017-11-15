@@ -2,13 +2,6 @@ var preload = function(){};
 
 preload.prototype = {
   preload: function() {
-    // Decor
-    game.load.image('sky', '../JS/assets/Decor/parallax_backgound_pack/_11_background.png');
-    game.load.image('trees', '../JS/assets/Decor/parallax_backgound_pack/_02_trees and bushes.png');
-    game.load.image('distanttrees', '../JS/assets/Decor/parallax_backgound_pack/_03_distant_trees.png');
-    game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes.png');
-    game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds.png');
-    game.load.image('clouds', '../JS/assets/Decor/parallax_backgound_pack/_08_clouds.png');
     // City
       //Buildings
     game.load.image('Building1','../JS/assets/Decor/Buildings/Building1.png');

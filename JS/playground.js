@@ -21,6 +21,13 @@ const musics = [
 
 playground.prototype = {
   preload: function() {
+    // Decor
+    game.load.image('sky', '../JS/assets/Decor/parallax_backgound_pack/_11_background_'+currentLvl+'.png');
+    game.load.image('trees', '../JS/assets/Decor/parallax_backgound_pack/_02_trees and bushes.png');
+    game.load.image('distanttrees', '../JS/assets/Decor/parallax_backgound_pack/_03_distant_trees_'+(currentLvl+1)%2+'.png');
+    game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes_'+(currentLvl+1)%2+'.png');
+    game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds_'+(currentLvl+1)%2+'.png');
+    game.load.image('clouds', '../JS/assets/Decor/parallax_backgound_pack/_08_clouds.png');
     console.log('Game is loaded');
   },
 
@@ -173,7 +180,7 @@ playground.prototype = {
       if (player.body.position.y >= 385) {
         // Allow the player to dash if they are touching the ground.
         player.animations.play('dash')
-        player.body.y = 390;
+        player.body.y = 395;
       } else {
         // Quick down
         player.body.gravity.y = 2000;
@@ -182,7 +189,7 @@ playground.prototype = {
       // If the player is not jumping nor dashing, make it run :
       player.animations.play('right');
       //Reset runner position:
-      player.body.y = 385.5
+      player.body.y = 386
     } else {
       //Default : stand still
       player.frame = 13;
@@ -224,7 +231,6 @@ function checkNewsPaperStatus(){
           if (!isMute) {
             game.add.audio('chaching').play().volume = 0.42;
           }
-          console.log("Delivered ! ");
         }
       }
     }
@@ -320,7 +326,7 @@ function generateObstacleGroup(nbBuildings){
       xPosition = Math.round(Math.random() * (sup)) + sup*i;
     }
     if (obstacles[rand] == 'metroUp'){
-      yPosition = game.world.height-210 - game.cache.getImage(obstacles[rand]).height;
+      yPosition = game.world.height-212 - game.cache.getImage(obstacles[rand]).height;
       currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
       game.physics.arcade.enable(currentObstacle);
       currentObstacle.body.velocity.x=-450;
@@ -353,7 +359,6 @@ function generateObstacleGroup(nbBuildings){
 }
 
 function obstaclesBottomElements(numberObstacles){
-      // console.log("Passe dans le if dans la fonction obstaclesBottomElements");
       let xPositionLeftSide = obstacleGroup.children[numberObstacles].x;
       //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
       let yPositionLeftSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
@@ -373,9 +378,7 @@ function obstaclesBottomElements(numberObstacles){
 // Ancienne fonction
 // function obstaclesBottomElements(nbBuildings){
 //   for (var i = 0; i < nbBuildings * (1 - 0.4); i++) {
-//     // console.log("Passe dans la boucle for de la fonction obstaclesBottomElements");
 //     if (obstacleGroup.children[i].key == 'metroUp'){
-//       // console.log("Passe dans le if dans la fonction obstaclesBottomElements");
 //       let xPosition = obstacleGroup.children[i].x;
 //       //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
 //       let yPositionSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
