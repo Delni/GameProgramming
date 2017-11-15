@@ -173,6 +173,7 @@ playground.prototype = {
       if (player.body.position.y >= 385) {
         // Allow the player to dash if they are touching the ground.
         player.animations.play('dash')
+        player.body.y = 390;
       } else {
         // Quick down
         player.body.gravity.y = 2000;
@@ -180,6 +181,8 @@ playground.prototype = {
     } else if (player.body.position.y >= 385) {
       // If the player is not jumping nor dashing, make it run :
       player.animations.play('right');
+      //Reset runner position:
+      player.body.y = 385.5
     } else {
       //Default : stand still
       player.frame = 13;
@@ -228,13 +231,6 @@ function checkNewsPaperStatus(){
   }
 }
 
-function collectStar (player, star) {
-    //Removes the star from the screen
-    star.kill();
-    //Add and update the score
-
-}
-
 function updateHousesLeft(){
   if(!isOverlaping){
     houses --;
@@ -243,7 +239,6 @@ function updateHousesLeft(){
 }
 
 function generateCity(nbBuildings){
-  // console.log('Generating city...');
   var buildings = [
     'Building1',
     'ColonialHouse',
@@ -306,7 +301,7 @@ function generateObstacleGroup(nbBuildings){
   var obstacles = [
     'box',
     'bin',
-    //'lampPost',
+    // 'lampPost',
     'metroUp'
   ];
   let currentObstacle;
@@ -325,7 +320,7 @@ function generateObstacleGroup(nbBuildings){
       xPosition = Math.round(Math.random() * (sup)) + sup*i;
     }
     if (obstacles[rand] == 'metroUp'){
-      yPosition = game.world.height-215 - game.cache.getImage(obstacles[rand]).height;
+      yPosition = game.world.height-210 - game.cache.getImage(obstacles[rand]).height;
       currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
       game.physics.arcade.enable(currentObstacle);
       currentObstacle.body.velocity.x=-450;
