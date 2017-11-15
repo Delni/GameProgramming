@@ -158,9 +158,12 @@ playground.prototype = {
     player.body.gravity.y = 550;
 
     //  Checks to see if the player overlaps with any of the buildings
-    if (game.physics.arcade.overlap(player, city)) {
-      updateHousesLeft()
+    if (game.physics.arcade.overlap(player, city,(p, c) => {
+      if (!isOverlaping && c.key !== 'CrossingRoad') {
+        updateHousesLeft();
+      }
       isOverlaping = true;
+    })) {
     } else {
       isOverlaping = false;
     }
@@ -226,7 +229,9 @@ function checkNewsPaperStatus(){
     if (thrownNewspaper.children[i].body.touching.down) {
       thrownNewspaper.children[i].body.velocity.x = city.children[0].body.velocity.x
       for (var j = 0; j < city.children.length; j++) {
-        if (!city.children[j].isDelivered && game.physics.arcade.overlap(thrownNewspaper.children[i],city.children[j])) {
+        if (city.children[j].key !== 'CrossingRoad' &&
+            !city.children[j].isDelivered &&
+            game.physics.arcade.overlap(thrownNewspaper.children[i],city.children[j])) {
           city.children[j].isDelivered = true;
           if (!isMute) {
             game.add.audio('chaching').play().volume = 0.42;
