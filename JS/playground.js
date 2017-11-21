@@ -31,7 +31,7 @@ playground.prototype = {
   },
 
   init: function(lvl){
-    left = 12*lvl;
+    left = 10*lvl+Math.ceil(10/lvl);
     houses = 10*lvl;
     obstacles = 2*lvl;
     currentLvl = lvl;
@@ -113,8 +113,9 @@ playground.prototype = {
     player.animations.add('dash', [16, 17], 12, true);
 
     //  The labels
-    leftText = game.add.text(16, 16, '🗞 Left: '+left, { fontSize: '32px', fill: '#000' });
-    houseText = game.add.text(16, 48, '🏠 Houses: '+houses, { fontSize: '32px', fill: '#000' });
+    let fontcolor = (currentLvl>6) ? '#FFF' : '#000'
+    leftText = game.add.text(16, 16, '🗞 Left: '+left, { fontSize: '32px', fill: fontcolor });
+    houseText = game.add.text(16, 48, '🏠 Houses: '+houses, { fontSize: '32px', fill: fontcolor });
 
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
@@ -137,6 +138,7 @@ playground.prototype = {
 
     // Add a input listener that can help us return from being paused
     game.input.onDown.add(unpause, self);
+    game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
     game.camera.flash(0x000000, 1000, false);
   },
 
@@ -173,6 +175,9 @@ playground.prototype = {
     if (game.physics.arcade.collide(player, obstacleGroup)){
       music.stop();
       game.state.start('Lose');
+    }
+    if(game.input.keyboard.isDown(Phaser.Keyboard.ESC)){
+      pause()
     }
 
     // Animations manager
@@ -234,6 +239,9 @@ function checkNewsPaperStatus(){
             !city.children[j].isDelivered &&
             game.physics.arcade.overlap(thrownNewspaper.children[i],city.children[j])) {
           city.children[j].isDelivered = true;
+          let oneUp = game.add.text(player.position.x+100,player.position.y,'+16pts!',{ fontSize: '32px', fill: '#fedd51' })
+          game.add.tween(oneUp).to({y: 100}, 1500, Phaser.Easing.Linear.None, true);
+          game.add.tween(oneUp).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
           if (!isMute) {
             game.add.audio('chaching').play().volume = 0.42;
           }
@@ -319,7 +327,7 @@ function generateObstacleGroup(nbBuildings){
   let currentObstacle;
   let xPosition = 0;
   for (var i = 0; i < nbBuildings * (1 - 0.4); i++) {
-    let rand = Math.round(Math.random() * (obstacles.length-1));
+    let rand = Math.round(Math.random() * (Math.min(obstacles.length-1,currentLvl)));
     var a;
     a = Math.round(Math.random() * (800 - 500)) + 500;
     let yPosition;
