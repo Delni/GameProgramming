@@ -23,9 +23,9 @@ playground.prototype = {
     // Decor
     game.load.image('sky', '../JS/assets/Decor/parallax_backgound_pack/_11_background_'+currentLvl+'.png');
     game.load.image('trees', '../JS/assets/Decor/parallax_backgound_pack/_02_trees and bushes.png');
-    game.load.image('distanttrees', '../JS/assets/Decor/parallax_backgound_pack/_03_distant_trees_'+(currentLvl+1)%2+'.png');
-    game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes_'+(currentLvl+1)%2+'.png');
-    game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds_'+(currentLvl+1)%2+'.png');
+    game.load.image('distanttrees', '../JS/assets/Decor/parallax_backgound_pack/_03_distant_trees_'+(currentLvl>6 ? 1 : 0)+'.png');
+    game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes_'+(currentLvl>3 ? 1 : 0)+'.png');
+    game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds_'+(currentLvl>1 ? 1 : 0)+'.png');
     game.load.image('clouds', '../JS/assets/Decor/parallax_backgound_pack/_08_clouds.png');
     console.log('Game is loaded');
   },
