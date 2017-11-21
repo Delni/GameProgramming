@@ -22,7 +22,11 @@ preload.prototype = {
     game.load.spritesheet('newspaper', '../JS/assets/Elements/newspaper_spritesheet.png', 96, 96);
     //Obstacles
     game.load.spritesheet('box', '../JS/assets/Decor/Obstacles/Box.png');
+    game.load.spritesheet('banc', '../JS/assets/Decor/Obstacles/Banc.png');
     game.load.spritesheet('bin', '../JS/assets/Decor/Obstacles/Bin.png');
+    game.load.spritesheet('pannelup', '../JS/assets/Decor/Obstacles/Pannel_up.png');
+    game.load.spritesheet('hole', '../JS/assets/Decor/Obstacles/DangerHole.png');
+    game.load.spritesheet('pannelside', '../JS/assets/Decor/Obstacles/Pannel_side.png');
     game.load.spritesheet('lampPost', '../JS/assets/Decor/Obstacles/LampPost.png');
     game.load.spritesheet('metroUp', '../JS/assets/Decor/Obstacles/MetroUp.png');
     game.load.spritesheet('metroLeftSide', '../JS/assets/Decor/Obstacles/MetroLeftSide.png');
