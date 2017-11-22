@@ -42,7 +42,7 @@ function nxtLvl() {
 }
 
 function replay() {
-  if(music !== 'undefined'){
+  if(typeof music !== 'undefined'){
     music.stop();
   }
   game.state.start('Game',true,false,currentLvl);
