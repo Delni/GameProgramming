@@ -19,11 +19,11 @@
         <p class="Subtitle">...want to try our downloadable game? Pack with ♥ and <a href="https://electron.atom.io" class="has-text-danger" target="_blank">Electron</a></p>
           <p>
             <span class="icon is-large"><i class="fa fa-apple fa-2x"></i></span>
-            Ready to deploy .dmg for Mac : <a href="../assets/dist/phaser-offline-1.0.0.dmg" class="is-link has-text-info">phaser-offline-1.0.0.dmg</a>
+            Ready to deploy .dmg for Mac : <a href="../assets/dist/newsrunner.dmg" class="is-link has-text-info">newsrunner.dmg</a>
           </p>
           <p>
             <span class="icon is-large"><i class="fa fa-windows fa-2x"></i></span>
-            Portable for Windows : <a href="../assets/dist/phaser-offline-1.0.0.zip" class="is-link has-text-info">phaser-offline-1.0.0.zip</a>
+            Portable for Windows : <a href="../assets/dist/newsrunner.zip" class="is-link has-text-info">newsrunner.zip</a>
           </p>
         <div class="has-text-centered">
           <img src="../assets/img/screenshot.png" alt="" width="525px">
