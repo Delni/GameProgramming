@@ -27,7 +27,7 @@ playground.prototype = {
     game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes_'+(currentLvl>3 ? 1 : 0)+'.png');
     game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds_'+(currentLvl>1 ? 1 : 0)+'.png');
     game.load.image('clouds', '../JS/assets/Decor/parallax_backgound_pack/_08_clouds.png');
-    console.log('Game is loaded');
+    //console.log('Game is loaded');
   },
 
   init: function(lvl){
@@ -35,6 +35,7 @@ playground.prototype = {
     houses = 10*lvl;
     obstacles = 2*lvl;
     currentLvl = lvl;
+    var event = new Phaser.Events('appear');
   },
 
   create: function(){
@@ -140,6 +141,21 @@ playground.prototype = {
     game.input.onDown.add(unpause, self);
     game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
     game.camera.flash(0x000000, 1000, false);
+
+    // Display the car obstacle
+    for (var i = 0; i<city.children.length; i++){
+      //var nb = 0;
+      if (city.children[i].key == 'CrossingRoad'){
+        //nb = nb + 1;
+        //console.log("L'enfant est ", i, " et on est passé ", nb, " fois dans la boucle");
+        let xPosition = city.children[i].body.x + (game.cache.getImage('CrossingRoad').width)/2;
+        currentObstacle = obstacleGroup.create(xPosition, game.world.height - 150,'carObstacle');
+        currentObstacle.anchor.setTo(0.5,0);
+        game.physics.arcade.enable(currentObstacle);
+        currentObstacle.body.velocity.x=-350;
+        currentObstacle.body.acceleration.set(-10,0);
+      }
+    }
   },
 
   update: function(){
@@ -325,6 +341,7 @@ function generateObstacleGroup(nbBuildings){
     'hole', //jump
     'banc', //jump
     'metroUp', // down
+    'treeUp', //down
   ];
   let currentObstacle;
   let xPosition = 0;
@@ -349,6 +366,12 @@ function generateObstacleGroup(nbBuildings){
     }
     else if(obstacles[rand] == 'pannelup'){
       yPosition = game.world.height-212 - game.cache.getImage(obstacles[rand]).height;
+      currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
+      game.physics.arcade.enable(currentObstacle);
+      obstaclesBottomElements(i,obstacles[rand]);
+    }
+    else if(obstacles[rand] == 'treeUp'){
+      yPosition = game.world.height-205 - game.cache.getImage(obstacles[rand]).height;
       currentObstacle = obstacleGroup.create(xPosition, yPosition,obstacles[rand]);
       game.physics.arcade.enable(currentObstacle);
       obstaclesBottomElements(i,obstacles[rand]);
@@ -383,7 +406,18 @@ function obstaclesBottomElements(numberObstacles,obstacle){
     game.physics.arcade.enable(currentOtherObstacle);
     currentOtherObstacle.body.velocity.x=-450;
     currentOtherObstacle.body.acceleration.set(-10,0);
-  } else {
+  }
+  else if (obstacle === 'treeUp'){
+    let xPositionDownSide = obstacleGroup.children[numberObstacles].x + 105;
+    //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
+    let yPositionDownSide = game.world.height-78 - game.cache.getImage('treeDown').height;
+    //currentObstacle = obstacleGroup.create(xPosition, yPositionSide,'metroLeftSide');
+    let currentObstacle = obstacleSide.create(xPositionDownSide, yPositionDownSide,'treeDown');
+    game.physics.arcade.enable(currentObstacle);
+    currentObstacle.body.velocity.x=-450;
+    currentObstacle.body.acceleration.set(-10,0);
+  }
+  else {
     let xPositionLeftSide = obstacleGroup.children[numberObstacles].x;
     //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
     let yPositionLeftSide = game.world.height-84 - game.cache.getImage('pannelside').height;
@@ -394,28 +428,6 @@ function obstaclesBottomElements(numberObstacles,obstacle){
     currentObstacle.body.acceleration.set(-10,0);
   }
 }
-
-// Ancienne fonction
-// function obstaclesBottomElements(nbBuildings){
-//   for (var i = 0; i < nbBuildings * (1 - 0.4); i++) {
-//     if (obstacleGroup.children[i].key == 'metroUp'){
-//       let xPosition = obstacleGroup.children[i].x;
-//       //let yPosition = game.world.height - 215 - game.cache.getImage('metroUp').height;
-//       let yPositionSide = game.world.height-70 - game.cache.getImage('metroLeftSide').height;
-//       //currentObstacle = obstacleGroup.create(xPosition, yPositionSide,'metroLeftSide');
-//       let currentObstacle = obstacleSide.create(xPosition, yPositionSide,'metroLeftSide');
-//       game.physics.arcade.enable(currentObstacle);
-//       currentObstacle.body.velocity.x=-450;
-//       currentObstacle.body.acceleration.set(-10,0);
-//       let xPositionSide = xPosition + 70; //px margin between each
-//       yPositionSide = game.world.height-70 - game.cache.getImage('metroRightSide').height;
-//       currentObstacle = obstacleSide.create(xPositionSide, yPositionSide,'metroRightSide');
-//       game.physics.arcade.enable(currentObstacle);
-//       currentObstacle.body.velocity.x=-450;
-//       currentObstacle.body.acceleration.set(-10,0);
-//     }
-//   }
-// }
 
 const pause_buttons = [
   {

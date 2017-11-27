@@ -31,6 +31,9 @@ preload.prototype = {
     game.load.spritesheet('metroUp', '../JS/assets/Decor/Obstacles/MetroUp.png');
     game.load.spritesheet('metroLeftSide', '../JS/assets/Decor/Obstacles/MetroLeftSide.png');
     game.load.spritesheet('metroRightSide', '../JS/assets/Decor/Obstacles/MetroRightSide.png');
+    game.load.spritesheet('treeUp', '../JS/assets/Decor/Obstacles/TreeUp.png');
+    game.load.spritesheet('treeDown', '../JS/assets/Decor/Obstacles/TreeDown.png');
+    game.load.spritesheet('carObstacle', '../JS/assets/Decor/Obstacles/CarObstacle.png');
     //Font
     game.load.bitmapFont('ParkLane','../JS/assets/font/parklane.png','../JS/assets/font/parklane.fnt')
     // UI
