@@ -56,7 +56,6 @@
                 <p class="subtitle is-6"><abbr title="Tile Maker">Tyler</abbr> of the Development Society</p>
               </div>
             </div>
-
             <div class="content">
               <span class="tag is-dark">B00333613</span><br>
               Totally beginner with piskel I enjoyed creating some assets in it, such as the houses and obstacles.
