@@ -40,13 +40,11 @@
                 <p class="subtitle is-6">Tenant of the Design Street</p>
               </div>
             </div>
-
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              B00334575
+              <br>Passionate about design, I created the buttons and the menus' layers.
+              <br>Then I used my knowledge of electron to adapt our game and download it.
+              <br>Finally we worked together for the game.
             </div>
           </div>
         </div>
@@ -68,13 +66,10 @@
                 <p class="subtitle is-6"><abbr title="Tile Maker">Tyler</abbr> of the Development Society</p>
               </div>
             </div>
-
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              B00333613
+              <br>Totally beginner with piskel I enjoyed creating some assets in it, such as the houses and obstacles.
+              <br>Then the development of the game has been a cooperative work.
             </div>
           </div>
         </div>
