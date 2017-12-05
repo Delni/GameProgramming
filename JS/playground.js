@@ -27,7 +27,6 @@ playground.prototype = {
     game.load.image('bushes', '../JS/assets/Decor/parallax_backgound_pack/_04_bushes_'+(currentLvl>3 ? 1 : 0)+'.png');
     game.load.image('hugeclouds', '../JS/assets/Decor/parallax_backgound_pack/_07_huge_clouds_'+(currentLvl>1 ? 1 : 0)+'.png');
     game.load.image('clouds', '../JS/assets/Decor/parallax_backgound_pack/_08_clouds.png');
-    //console.log('Game is loaded');
   },
 
   init: function(lvl){
@@ -149,7 +148,7 @@ playground.prototype = {
         //nb = nb + 1;
         //console.log("L'enfant est ", i, " et on est passé ", nb, " fois dans la boucle");
         let xPosition = city.children[i].body.x + (game.cache.getImage('CrossingRoad').width)/2;
-        currentObstacle = obstacleGroup.create(xPosition, game.world.height - 150,'carObstacle');
+        currentObstacle = obstacleGroup.create(xPosition, game.world.height - 225,'carObstacle');
         currentObstacle.anchor.setTo(0.5,0);
         game.physics.arcade.enable(currentObstacle);
         currentObstacle.body.velocity.x=-350;
@@ -350,13 +349,15 @@ function generateObstacleGroup(nbBuildings){
     var a;
     a = Math.round(Math.random() * (800 - 500)) + 500;
     let yPosition;
-    //let xPosition = game.world.width * (i+1) + a; //px margin between each
-    //xPosition = xPosition + Math.round(Math.random() * (city.children[nbBuildings - 1].x - xPosition)) + a;
     sup = (city.children[nbBuildings - 1].x / (nbBuildings * (1 - 0.4)));
     if (i===0) {
-      xPosition = Math.round(Math.random() * (sup)) + 400;
+      do {
+        xPosition = Math.round(Math.random() * (sup)) + 400;
+      } while (xPosition < 600); // Avoid obstacle to pop at the very begining...
     } else {
-      xPosition = Math.round(Math.random() * (sup)) + sup*i;
+      do {
+        xPosition = Math.round(Math.random() * (sup)) + sup*i;
+      } while (xPosition < sup*i+200); // Should avoid obstacles to be to close to each others
     }
     if (obstacles[rand] == 'metroUp'){
       yPosition = game.world.height-212 - game.cache.getImage(obstacles[rand]).height;
@@ -505,38 +506,15 @@ function pause(){
 function unpause(event){
     // Only act if paused
     if(game.paused){
-        //TODO @CHANGE
-        // Calculate the corners of the menu
-        var x1 = game.world.centerX - 270, x2 = game.world.centerX + 270,
-            y1 = game.world.height-89, y2 = game.world.height;
-
-        // Check if the click was inside the menu
-        if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 ){
-            // The choicemap is an array that will help us see which item was clicked
-            var choisemap = ['one', 'two', 'three', 'four', 'five', 'six'];
-
-            // Get menu local coordinates for the click
-            var x = event.x - x1,
-                y = event.y - y1;
-
-            // Calculate the choice
-            var choise = Math.floor(x / 90);
-
-            // Display the choice
-            choiseLabel.text = 'You chose menu item: ' + choisemap[choise];
-
-        }
-        else{
-          // Remove the menu and the label
-          menu.destroy();
-          choiseLabel.destroy();
-          pauseWP.destroy();
-          // Display pause button
-          pause_button.visible = true;
-          // pause_button.setFrames(2,1,0);
-          // Unpause the game
-          game.paused = false;
-        }
+      // Remove the menu and the label
+      menu.destroy();
+      choiseLabel.destroy();
+      pauseWP.destroy();
+      // Display pause button
+      pause_button.visible = true;
+      // pause_button.setFrames(2,1,0);
+      // Unpause the game
+      game.paused = false;
     }
 }
 
