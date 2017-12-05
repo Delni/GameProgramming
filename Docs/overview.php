@@ -32,21 +32,26 @@
         </div>
         <p class="title is-1">Overview</p>
         <p>
-          Evolving in a city in the 1920’s, a newspaper’s carrier must deliver a certain amount of newspapers
+          Evolving in a city in the late 1920’s, a newspaper’s carrier must deliver a certain amount of newspapers
           as fast as possible in the mailboxes in the street. Doing so, the player must avoid different obstacles
           such as cars, trash bins, ... The player would continuously run through the game until an obstacle stops
           the character.
-          During the game, the character could jump, stop, slide and throw newspapers.
-          We’ve also been thinking about making different levels of difficulty for the game.
+          During the game, the character could jump, slide and throw newspapers.
+          As the player go through levels, difficulty will increase : more obstacles, more houses, less newspapers.
+         </p>
+         <p class="subtitle is-5">Inspirations</p>
+         <p>You can see <em>News Runner</em> as the spiritual little brother of <em>PaperBoy</em> (see <a href="./sources.php" class="has-text-info">Sources</a> for more info),
+           with some improvements in the diversity of the obstacles and the houses, but with an other gameplay:
+            cabinet perspective game vs 2D flat runner.
          </p>
          <hr>
          <p class="title is-2">Website completion</p>
          <p>
            At first we’ve determined the main purposes and goals we wished to get from our web site. Then we’ve
-            agreed on the website’s architecture and its universe. We’ve tried to determine the design on our
-            pages by choosing the color palette with colormind.io and by working on the layouts. In the same time
+            agreed on the website’s architecture and its universe (the late 1920's). We’ve tried to determine the design on our
+            pages by choosing the color palette with <a href="colormind.io" class="has-text-info">colormind.io</a> and by working on the layouts. In the same time
             we’ve written the content of the different pages. Then we started creating the website itself and
-            coding it according to the website architecture that was previously decided.
+            coding it according to the website architecture that was previously decided. We also choose fonts that suited our universe.
           </p>
           <hr>
           <p class="title is-2">What has been learnt so far...</p>
@@ -57,21 +62,28 @@
             We also learnt valuable skills on how to create / modify spritesheets.
           </p>
           <hr>
-          <p class="title is-2">What are the difficulties encontered...</p>
+          <p class="title is-2">What were the difficulties encountered...</p>
           <p>
-            We’ve begun to apprehend the universe we wanted for our game so we’ve tried to design some elements
-            such as the characters. The main issue is to find assets, or create them, in a style that fit our project.
+            Main issue was to find assets, or create them, in a style that fit our project. Hopefully, we have found quite quickly the player,
+            setting a PixelArt style easy to reproduce for static or simpliest assets.
+            We also encountered some difficulties with the gameplay. As we used Phaser's <em>Arcade</em> engine,
+            the hitboxes are rectangular and sometimes collide far from what you would expect. A solution would have been to switch to P2 engine.
           </p>
           <hr>
-          <p class="title is-2">What are the next steps...</p>
+          <p class="title is-2">What were the milestones...</p>
 
-            <p><input type="checkbox" class="checkbox"> We need to find the title for our game.</p>
-            <p><input type="checkbox" class="checkbox"> The design of the streets, the buildings and the industrial furniture will be a big part of our work.</p>
-            <p><input type="checkbox" class="checkbox"> Determine the gameplay and the different options the player will be able to choose upon.</p>
-
+            <p><input type="checkbox" class="checkbox" checked> Find the title for our game.</p>
+            <p><input type="checkbox" class="checkbox" checked> Adapt the assets to fit our game.</p>
+            <p><input type="checkbox" class="checkbox" checked> Design the streets, the buildings and the industrial furniture</p>
+            <p><input type="checkbox" class="checkbox" checked> Design the obstacles</p>
+            <p><input type="checkbox" class="checkbox" checked> Determine the gameplay and the different options the player will be able to choose upon.</p>
+            <p><input type="checkbox" class="checkbox" checked> Elaborate a system to make the levels harder and harder, and different from each other</p>
+            <p><input type="checkbox" class="checkbox"> Improve hitbox with P2 engine</p>
+            <p><input type="checkbox" class="checkbox"> More assets, more diversity !</p>
+          <hr>
           <p>
-             Of course learning how to use Phaser will be challenging at first but with practice and work we
-             should be able to develop our ideas into a game.
+             Of course learning how to use Phaser was very challenging at first but with practice and work we
+             were able to develop our ideas into a game. We are now proud of our runner.
           </p>
       </div>
     </div>

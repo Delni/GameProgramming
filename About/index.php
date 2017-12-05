@@ -30,23 +30,16 @@
           </div>
           <div class="card-content">
             <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                </figure>
-              </div>
               <div class="media-content">
                 <p class="title is-4">Nicolas Delauney</p>
                 <p class="subtitle is-6">Tenant of the Design Street</p>
               </div>
             </div>
-
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              <span class="tag is-dark">B00334575</span><br>
+              Passionate about design, I created the buttons and the menus' layers.
+              Then I used my knowledge of electron to adapt our game and make it downloadable.
+              Finally we worked together with Claire for the game.
             </div>
           </div>
         </div>
@@ -58,11 +51,6 @@
           </div>
           <div class="card-content">
             <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                </figure>
-              </div>
               <div class="media-content">
                 <p class="title is-4">Claire Lacroix</p>
                 <p class="subtitle is-6"><abbr title="Tile Maker">Tyler</abbr> of the Development Society</p>
@@ -70,11 +58,9 @@
             </div>
 
             <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-              <a href="#" class="has-text-primary">#css</a> <a href="#">#responsive</a>
-              <br>
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              <span class="tag is-dark">B00333613</span><br>
+              Totally beginner with piskel I enjoyed creating some assets in it, such as the houses and obstacles.
+              <br>Then the development of the game has been a cooperative work with Nicolas.
             </div>
           </div>
         </div>

@@ -27,7 +27,10 @@
             <article class="message is-dark has-no-background">
               <div class="message-body">
                 <p class="title">Inspiration</p>
-                <p>You can find similarities in our game and the old game called <a href="https://en.wikipedia.org/wiki/Paperboy_(video_game)" class="has-text-info">Paper Boy</a>.<br>
+                <p>You can find similarities in our game and the old game called <a href="https://en.wikipedia.org/wiki/Paperboy_(video_game)" class="has-text-info">Paper Boy</a>.
+                  Contrary to PaperBoy, the delivery must be done in each and every house the player encounters. <br> Moreover, the levels are not played through a week, but through a day:
+                  as you unlock levels, you can see the sky change to follow hours of the day (from morning until dark). <br><em>Will you be able to see the sunset ?</em><br>
+                  We also added a feature to make you feel like you are entering the city:  the higher the level is, the more buildings you see in background.<br>
                   Some gameplay features for handling 2D runner are inspired by <a href="https://halfbrick.com/our-games/jetpack-joyride/" class="has-text-info">JetPack Joyride</a>.  </p>
                 <hr>
                 <img src="../assets/img/PaperboyGameplay.png" alt="PaperBoy" class="image" style="margin:auto;margin-bottom : 0">
