@@ -136,8 +136,6 @@ playground.prototype = {
     pause_button.scale.setTo(0.5,0.5);
     pause_group.add(pause_button);
 
-    // Add a input listener that can help us return from being paused
-    game.input.onDown.add(unpause, self);
     game.input.keyboard.addKeyCapture(Phaser.Keyboard.SPACEBAR);
     game.camera.flash(0x000000, 1000, false);
 
