@@ -17,16 +17,17 @@
       <div class="container">
         <p class="title">You are not keen on online web-embedded game ?</p>
         <p class="Subtitle">...want to try our downloadable game? Pack with ♥ and <a href="https://electron.atom.io" class="has-text-danger" target="_blank">Electron</a></p>
-          <p>
-            <span class="icon is-large"><i class="fa fa-apple fa-2x"></i></span>
-            Ready to deploy .dmg for Mac : <a href="../assets/dist/newsrunner.dmg" class="is-link has-text-info">newsrunner.dmg</a>
-          </p>
-          <p>
-            <span class="icon is-large"><i class="fa fa-windows fa-2x"></i></span>
-            Portable for Windows : <a href="../assets/dist/newsrunner.zip" class="is-link has-text-info">newsrunner.zip</a>
-          </p>
+        <p>
+          <span class="icon is-large"><i class="fa fa-apple fa-2x"></i></span>
+          Ready to deploy .dmg for Mac : <a href="https://drive.google.com/open?id=1W1bKPDIrrnEca5Ip9ycX7kwgl20HrRA9" class="is-link has-text-info">newsrunner.dmg</a>
+        </p>
+        <p>
+          <span class="icon is-large"><i class="fa fa-windows fa-2x"></i></span>
+          Portable for Windows : <a href="https://drive.google.com/open?id=1PxuNhgHLIWl0_m6gnCdjda3xoD8rneVy" class="is-link has-text-info">newsrunner.exe</a>
+        </p>
+        <p><em>Note : the links leads to a GoogleDrive deposit, since Moodle crashed on uploading because of the weight of the executables (~350Mb each). <br> Please see "Details" as a proof that those files where done in time.</em></p>
         <div class="has-text-centered">
-          <img src="../assets/img/screenshot.png" alt="" width="525px">
+          <img src="../assets/img/screenshot.png" alt="" width="475px">
         </div>
         </div>
       </div>
