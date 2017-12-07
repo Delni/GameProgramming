@@ -264,6 +264,15 @@ function checkNewsPaperStatus(){
   }
 }
 
+//
+// ####### #     # #     #  #####  ####### ### ####### #     #  #####
+// #       #     # ##    # #     #    #     #  #     # ##    # #     #
+// #       #     # # #   # #          #     #  #     # # #   # #
+// #####   #     # #  #  # #          #     #  #     # #  #  #  #####
+// #       #     # #   # # #          #     #  #     # #   # #       #
+// #       #     # #    ## #     #    #     #  #     # #    ## #     #
+// #        #####  #     #  #####     #    ### ####### #     #  #####
+
 function updateHousesLeft(){
   if(!isOverlaping){
     houses --;
@@ -488,16 +497,11 @@ function pause(){
       };
       menu.add(tmp);
     }
-    //pause_label.hide();
     //Display WP
     pauseWP = midlayer.create(0,0,'pause');
 
-    //Display play button
-    // pause_button.setFrames(6,7,8);
+    //Display pause button
     pause_button.visible =false;
-  // And a label to illustrate which menu item was chosen. (This is not necessary)
-  choiseLabel = game.add.text(game.world.centerX-200, game.world.centerY-100, 'Click outside menu to continue', { font: '30px Arial', fill: '#fff' });
-  //choiseLabel.anchor.setTo(0.5, 0.5);
 }
 
 // And finally the method that handles the pause menu
@@ -506,7 +510,6 @@ function unpause(event){
     if(game.paused){
       // Remove the menu and the label
       menu.destroy();
-      choiseLabel.destroy();
       pauseWP.destroy();
       // Display pause button
       pause_button.visible = true;
